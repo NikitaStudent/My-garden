@@ -8,22 +8,32 @@
 
 /* Begin PBXBuildFile section */
 		C194D1A520FB4D59009616B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C194D1A420FB4D59009616B7 /* AppDelegate.swift */; };
-		C194D1A720FB4D59009616B7 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C194D1A620FB4D59009616B7 /* FirstViewController.swift */; };
-		C194D1A920FB4D59009616B7 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C194D1A820FB4D59009616B7 /* SecondViewController.swift */; };
 		C194D1AC20FB4D59009616B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C194D1AA20FB4D59009616B7 /* Main.storyboard */; };
 		C194D1AE20FB4D5E009616B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C194D1AD20FB4D5E009616B7 /* Assets.xcassets */; };
 		C194D1B120FB4D5E009616B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C194D1AF20FB4D5E009616B7 /* LaunchScreen.storyboard */; };
+		C194D1BD20FB51B2009616B7 /* PlantsMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C194D1BC20FB51B2009616B7 /* PlantsMain.storyboard */; };
+		C194D1C420FB5211009616B7 /* UserArea.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C194D1C320FB5211009616B7 /* UserArea.storyboard */; };
+		C194D1C620FB5253009616B7 /* PlantsMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C194D1C520FB5253009616B7 /* PlantsMainController.swift */; };
+		C194D1C820FB5299009616B7 /* UserAreaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C194D1C720FB5299009616B7 /* UserAreaController.swift */; };
+		C194D1CA20FB5362009616B7 /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C194D1C920FB5362009616B7 /* Plant.swift */; };
+		C19B1C8D20FB599F006192BB /* mainPlantCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19B1C8C20FB599F006192BB /* mainPlantCollectionViewCell.swift */; };
+		C19B1C8F20FB5FF0006192BB /* PlantsMainCollectionViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19B1C8E20FB5FF0006192BB /* PlantsMainCollectionViewHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C194D1A120FB4D59009616B7 /* My garden.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My garden.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C194D1A420FB4D59009616B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C194D1A620FB4D59009616B7 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		C194D1A820FB4D59009616B7 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		C194D1AB20FB4D59009616B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C194D1AD20FB4D5E009616B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C194D1B020FB4D5E009616B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C194D1B220FB4D5E009616B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C194D1BC20FB51B2009616B7 /* PlantsMain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlantsMain.storyboard; sourceTree = "<group>"; };
+		C194D1C320FB5211009616B7 /* UserArea.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserArea.storyboard; sourceTree = "<group>"; };
+		C194D1C520FB5253009616B7 /* PlantsMainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsMainController.swift; sourceTree = "<group>"; };
+		C194D1C720FB5299009616B7 /* UserAreaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAreaController.swift; sourceTree = "<group>"; };
+		C194D1C920FB5362009616B7 /* Plant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
+		C19B1C8C20FB599F006192BB /* mainPlantCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainPlantCollectionViewCell.swift; sourceTree = "<group>"; };
+		C19B1C8E20FB5FF0006192BB /* PlantsMainCollectionViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsMainCollectionViewHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +66,84 @@
 		C194D1A320FB4D59009616B7 /* My garden */ = {
 			isa = PBXGroup;
 			children = (
+				C194D1BE20FB51E5009616B7 /* UserArea */,
+				C194D1B820FB517F009616B7 /* PlantsMain */,
 				C194D1A420FB4D59009616B7 /* AppDelegate.swift */,
-				C194D1A620FB4D59009616B7 /* FirstViewController.swift */,
-				C194D1A820FB4D59009616B7 /* SecondViewController.swift */,
 				C194D1AA20FB4D59009616B7 /* Main.storyboard */,
 				C194D1AD20FB4D5E009616B7 /* Assets.xcassets */,
 				C194D1AF20FB4D5E009616B7 /* LaunchScreen.storyboard */,
 				C194D1B220FB4D5E009616B7 /* Info.plist */,
 			);
 			path = "My garden";
+			sourceTree = "<group>";
+		};
+		C194D1B820FB517F009616B7 /* PlantsMain */ = {
+			isa = PBXGroup;
+			children = (
+				C194D1BA20FB5190009616B7 /* Model */,
+				C194D1BB20FB5194009616B7 /* View */,
+				C194D1B920FB5188009616B7 /* Controller */,
+			);
+			path = PlantsMain;
+			sourceTree = "<group>";
+		};
+		C194D1B920FB5188009616B7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C194D1C520FB5253009616B7 /* PlantsMainController.swift */,
+				C19B1C8C20FB599F006192BB /* mainPlantCollectionViewCell.swift */,
+				C19B1C8E20FB5FF0006192BB /* PlantsMainCollectionViewHeaderView.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		C194D1BA20FB5190009616B7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C194D1C920FB5362009616B7 /* Plant.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C194D1BB20FB5194009616B7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C194D1BC20FB51B2009616B7 /* PlantsMain.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C194D1BE20FB51E5009616B7 /* UserArea */ = {
+			isa = PBXGroup;
+			children = (
+				C194D1C220FB5202009616B7 /* Model */,
+				C194D1C020FB51F9009616B7 /* View */,
+				C194D1BF20FB51F3009616B7 /* Controller */,
+			);
+			path = UserArea;
+			sourceTree = "<group>";
+		};
+		C194D1BF20FB51F3009616B7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C194D1C720FB5299009616B7 /* UserAreaController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		C194D1C020FB51F9009616B7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C194D1C320FB5211009616B7 /* UserArea.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C194D1C220FB5202009616B7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,9 +204,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C194D1C420FB5211009616B7 /* UserArea.storyboard in Resources */,
 				C194D1B120FB4D5E009616B7 /* LaunchScreen.storyboard in Resources */,
 				C194D1AE20FB4D5E009616B7 /* Assets.xcassets in Resources */,
 				C194D1AC20FB4D59009616B7 /* Main.storyboard in Resources */,
+				C194D1BD20FB51B2009616B7 /* PlantsMain.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,9 +219,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C194D1A920FB4D59009616B7 /* SecondViewController.swift in Sources */,
 				C194D1A520FB4D59009616B7 /* AppDelegate.swift in Sources */,
-				C194D1A720FB4D59009616B7 /* FirstViewController.swift in Sources */,
+				C194D1CA20FB5362009616B7 /* Plant.swift in Sources */,
+				C19B1C8D20FB599F006192BB /* mainPlantCollectionViewCell.swift in Sources */,
+				C194D1C820FB5299009616B7 /* UserAreaController.swift in Sources */,
+				C194D1C620FB5253009616B7 /* PlantsMainController.swift in Sources */,
+				C19B1C8F20FB5FF0006192BB /* PlantsMainCollectionViewHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
