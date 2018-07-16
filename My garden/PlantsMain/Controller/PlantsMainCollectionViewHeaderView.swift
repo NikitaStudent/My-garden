@@ -10,6 +10,7 @@ import UIKit
 
 class PlantsMainCollectionViewHeaderView: UICollectionReusableView {
     
+    @IBOutlet weak var waterCollectionView: UICollectionView!
     
     @IBOutlet weak var addButton: UIButton!
     

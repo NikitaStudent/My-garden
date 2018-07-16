@@ -24,13 +24,13 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wSq-ZZ-4GL">
                                     <size key="itemSize" width="168" height="198"/>
-                                    <size key="headerReferenceSize" width="50" height="55"/>
+                                    <size key="headerReferenceSize" width="50" height="250"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="mainPlantCell" id="VBc-qR-zto" customClass="mainPlantCollectionViewCell" customModule="My_garden" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55" width="168" height="198"/>
+                                        <rect key="frame" x="0.0" y="250" width="168" height="198"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="168" height="198"/>
@@ -63,26 +63,90 @@
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="headerViewPlantsMainColectionView" id="rVg-Hx-Nug" customClass="PlantsMainCollectionViewHeaderView" customModule="My_garden" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PpK-w1-SjS">
-                                            <rect key="frame" x="8" y="10" width="359" height="40"/>
+                                            <rect key="frame" x="8" y="191" width="359" height="51"/>
                                             <color key="backgroundColor" red="0.25490196079999999" green="0.64313725489999995" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="32"/>
                                             <state key="normal" title="+">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </state>
                                         </button>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vZt-K4-H4I">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="181"/>
+                                            <subviews>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="b7K-WE-efj">
+                                                    <rect key="frame" x="10" y="54" width="355" height="117"/>
+                                                    <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Vej-WQ-GtM">
+                                                        <size key="itemSize" width="94" height="116"/>
+                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    </collectionViewFlowLayout>
+                                                    <cells>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="waterCell" id="7gw-3M-9Ex" customClass="WaterTodayCell" customModule="My_garden" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.5" width="94" height="116"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                                <rect key="frame" x="0.0" y="0.0" width="94" height="116"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IqH-Xd-N1j">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="94" height="116"/>
+                                                                    </imageView>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Фикус" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2of-Pt-eY4">
+                                                                        <rect key="frame" x="11" y="87" width="72" height="18"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                            </view>
+                                                            <constraints>
+                                                                <constraint firstItem="IqH-Xd-N1j" firstAttribute="top" secondItem="7gw-3M-9Ex" secondAttribute="top" id="6la-9A-25V"/>
+                                                                <constraint firstAttribute="trailing" secondItem="IqH-Xd-N1j" secondAttribute="trailing" id="8AG-lQ-iGK"/>
+                                                                <constraint firstItem="2of-Pt-eY4" firstAttribute="leading" secondItem="7gw-3M-9Ex" secondAttribute="leadingMargin" constant="3" id="Dbx-R9-URO"/>
+                                                                <constraint firstAttribute="trailingMargin" secondItem="2of-Pt-eY4" secondAttribute="trailing" constant="3" id="EC2-5u-A99"/>
+                                                                <constraint firstItem="IqH-Xd-N1j" firstAttribute="leading" secondItem="7gw-3M-9Ex" secondAttribute="leading" id="NAm-ca-R3i"/>
+                                                                <constraint firstAttribute="bottom" secondItem="IqH-Xd-N1j" secondAttribute="bottom" id="W0W-yU-qdm"/>
+                                                                <constraint firstItem="2of-Pt-eY4" firstAttribute="bottom" secondItem="7gw-3M-9Ex" secondAttribute="bottomMargin" constant="-3" id="lZa-zY-eyy"/>
+                                                            </constraints>
+                                                        </collectionViewCell>
+                                                    </cells>
+                                                </collectionView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="b7K-WE-efj" secondAttribute="trailing" constant="10" id="38W-YK-vw6"/>
+                                                <constraint firstItem="b7K-WE-efj" firstAttribute="leading" secondItem="vZt-K4-H4I" secondAttribute="leading" constant="10" id="MWl-Fn-H16"/>
+                                                <constraint firstAttribute="bottom" secondItem="b7K-WE-efj" secondAttribute="bottom" constant="10" id="c8Y-MA-IdB"/>
+                                            </constraints>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Полить сегодня" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="44k-xG-Qam">
+                                            <rect key="frame" x="18" y="8" width="339" height="36"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="PpK-w1-SjS" firstAttribute="top" secondItem="rVg-Hx-Nug" secondAttribute="top" constant="10" id="15A-cN-3ib"/>
+                                        <constraint firstItem="vZt-K4-H4I" firstAttribute="leading" secondItem="rVg-Hx-Nug" secondAttribute="leading" id="4FE-CV-7xV"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="PpK-w1-SjS" secondAttribute="trailing" id="CGg-gV-pw5"/>
+                                        <constraint firstItem="44k-xG-Qam" firstAttribute="top" secondItem="rVg-Hx-Nug" secondAttribute="topMargin" id="M0g-ur-Ml8"/>
+                                        <constraint firstItem="vZt-K4-H4I" firstAttribute="top" secondItem="rVg-Hx-Nug" secondAttribute="top" id="Qtj-ks-n2d"/>
+                                        <constraint firstItem="vZt-K4-H4I" firstAttribute="trailing" secondItem="rVg-Hx-Nug" secondAttribute="trailing" id="Y0G-vh-0u4"/>
+                                        <constraint firstItem="PpK-w1-SjS" firstAttribute="top" secondItem="vZt-K4-H4I" secondAttribute="bottom" constant="10" id="Yed-fA-1zh"/>
+                                        <constraint firstItem="b7K-WE-efj" firstAttribute="top" secondItem="44k-xG-Qam" secondAttribute="bottom" constant="10" id="bOp-Oh-yDS"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="44k-xG-Qam" secondAttribute="trailing" constant="10" id="i9p-dY-rsa"/>
+                                        <constraint firstItem="PpK-w1-SjS" firstAttribute="bottom" secondItem="rVg-Hx-Nug" secondAttribute="bottomMargin" id="lAF-uG-aPG"/>
                                         <constraint firstItem="PpK-w1-SjS" firstAttribute="leading" secondItem="rVg-Hx-Nug" secondAttribute="leadingMargin" id="lfO-Ms-Xmx"/>
-                                        <constraint firstAttribute="bottom" secondItem="PpK-w1-SjS" secondAttribute="bottom" id="yTV-W8-hhy"/>
+                                        <constraint firstItem="44k-xG-Qam" firstAttribute="leading" secondItem="rVg-Hx-Nug" secondAttribute="leadingMargin" constant="10" id="piu-in-nyL"/>
                                     </constraints>
                                     <connections>
                                         <outlet property="addButton" destination="PpK-w1-SjS" id="mGN-p9-lyo"/>
+                                        <outlet property="waterCollectionView" destination="b7K-WE-efj" id="mwq-ia-B4H"/>
                                     </connections>
                                 </collectionReusableView>
                                 <connections>

@@ -18,6 +18,7 @@
 		C194D1CA20FB5362009616B7 /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C194D1C920FB5362009616B7 /* Plant.swift */; };
 		C19B1C8D20FB599F006192BB /* mainPlantCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19B1C8C20FB599F006192BB /* mainPlantCollectionViewCell.swift */; };
 		C19B1C8F20FB5FF0006192BB /* PlantsMainCollectionViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19B1C8E20FB5FF0006192BB /* PlantsMainCollectionViewHeaderView.swift */; };
+		C1AB8AA120FD185200839F2F /* WaterTodayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AB8AA020FD185200839F2F /* WaterTodayCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		C194D1C920FB5362009616B7 /* Plant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
 		C19B1C8C20FB599F006192BB /* mainPlantCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainPlantCollectionViewCell.swift; sourceTree = "<group>"; };
 		C19B1C8E20FB5FF0006192BB /* PlantsMainCollectionViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsMainCollectionViewHeaderView.swift; sourceTree = "<group>"; };
+		C1AB8AA020FD185200839F2F /* WaterTodayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterTodayCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 				C194D1C520FB5253009616B7 /* PlantsMainController.swift */,
 				C19B1C8C20FB599F006192BB /* mainPlantCollectionViewCell.swift */,
 				C19B1C8E20FB5FF0006192BB /* PlantsMainCollectionViewHeaderView.swift */,
+				C1AB8AA020FD185200839F2F /* WaterTodayCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 				C194D1CA20FB5362009616B7 /* Plant.swift in Sources */,
 				C19B1C8D20FB599F006192BB /* mainPlantCollectionViewCell.swift in Sources */,
 				C194D1C820FB5299009616B7 /* UserAreaController.swift in Sources */,
+				C1AB8AA120FD185200839F2F /* WaterTodayCell.swift in Sources */,
 				C194D1C620FB5253009616B7 /* PlantsMainController.swift in Sources */,
 				C19B1C8F20FB5FF0006192BB /* PlantsMainCollectionViewHeaderView.swift in Sources */,
 			);
