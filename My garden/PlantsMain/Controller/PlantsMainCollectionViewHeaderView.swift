@@ -14,10 +14,60 @@ class PlantsMainCollectionViewHeaderView: UICollectionReusableView {
     
     @IBOutlet weak var addButton: UIButton!
     
+    fileprivate var plants: [Plant] = []
+    let sectionInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 8.0, right: 0.0)
+    let cellWidth: CGFloat = 80
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
         addButton.layer.cornerRadius = 18.0
     }
+    
+    func configure(with plants: [Plant]) {
+        self.plants = plants
+    }
+    
+}
+
+// MARK: - UICollectionViewDelegate, UICollectionViewDataSource
+
+extension PlantsMainCollectionViewHeaderView: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: WaterTodayCell.self), for: indexPath) as? WaterTodayCell
+        
+        cell?.image.image = plants[indexPath.row].image
+        cell?.title.text = plants[indexPath.row].name
+        return cell ?? UICollectionViewCell()
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return plants.count
+    }
+    
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+
+extension PlantsMainCollectionViewHeaderView: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: cellWidth, height: cellWidth * 1.3)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return sectionInsets
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 10
+    }
+    
+    
     
 }

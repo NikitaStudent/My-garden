@@ -29,6 +29,7 @@ class PlantsMainController: UIViewController {
     }()
     let itemsPerRow: CGFloat = 2
     let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
+    var sectionHeader: PlantsMainCollectionViewHeaderView?
     
     // MARK: - IBOutlets
     
@@ -46,8 +47,8 @@ class PlantsMainController: UIViewController {
 //        navigationItem.largeTitleDisplayMode = .always
         
         // remove border and shadow
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
+//        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+//        navigationController?.navigationBar.shadowImage = UIImage()
     }
     
     
@@ -61,20 +62,11 @@ class PlantsMainController: UIViewController {
 extension PlantsMainController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        if collectionView == self.collectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "mainPlantCell", for: indexPath) as? mainPlantCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "mainPlantCell", for: indexPath) as? mainPlantCollectionViewCell
             
-            cell?.image.image = plants[indexPath.row].image
-            cell?.title.text = plants[indexPath.row].name
-            return cell ?? UICollectionViewCell()
-//        } else {
-//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "waterCell", for: indexPath) as? WaterTodayCell
-//
-//            cell?.image.image = plants[indexPath.row].image
-//            cell?.title.text = plants[indexPath.row].name
-//            return cell ?? UICollectionViewCell()
-//        }
-        
+        cell?.image.image = plants[indexPath.row].image
+        cell?.title.text = plants[indexPath.row].name
+        return cell ?? UICollectionViewCell()
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -87,17 +79,23 @@ extension PlantsMainController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
-//        if collectionView == self.collectionView {
-            switch kind {
-            case UICollectionElementKindSectionHeader:
-                let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerViewPlantsMainColectionView",                   for: indexPath) as! PlantsMainCollectionViewHeaderView
-                return headerView
-            default:
-                assert(false, "Unexpected element kind")
+        switch kind {
+        case UICollectionElementKindSectionHeader:
+            if let header = sectionHeader {
+                return header
             }
-//        }
-//
-//        return UICollectionReusableView()
+            
+            guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: String(describing: PlantsMainCollectionViewHeaderView.self),                   for: indexPath) as? PlantsMainCollectionViewHeaderView else {
+                return UICollectionReusableView()
+            }
+            
+            sectionHeader = headerView
+            sectionHeader?.configure(with: plants)
+            
+            return headerView
+        default:
+            assert(false, "Unexpected element kind")
+        }
         
     }
     
@@ -108,16 +106,11 @@ extension PlantsMainController: UICollectionViewDelegate, UICollectionViewDataSo
 extension PlantsMainController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        print(collectionView == self.collectionView)
-//        if collectionView == self.collectionView {
-            let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
-            let availableWidth = view.frame.width - paddingSpace
-            let widthPerItem = availableWidth / itemsPerRow
-            print("sizeForItem")
-            return CGSize(width: widthPerItem, height: widthPerItem * 1.3)
-//        } else {
-//            return CGSize(width: 20, height: 40)
-//        }
+        let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
+        let availableWidth = view.frame.width - paddingSpace
+        let widthPerItem = availableWidth / itemsPerRow
+        print("sizeForItem")
+        return CGSize(width: widthPerItem, height: widthPerItem * 1.3)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -127,8 +120,6 @@ extension PlantsMainController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return sectionInsets.left
     }
-    
-    
     
 }
 

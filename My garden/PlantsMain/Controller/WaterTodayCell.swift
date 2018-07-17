@@ -11,13 +11,14 @@ import UIKit
 class WaterTodayCell: UICollectionViewCell {
     
     @IBOutlet weak var image: UIImageView!
-    
     @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var colorLabel: PaddingLabel!
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         
         image.layer.cornerRadius = 10.0
+        colorLabel.layer.cornerRadius = colorLabel.frame.height / 2
     }
     
 }

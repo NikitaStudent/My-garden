@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C10804B520FE684F00D301E6 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10804B420FE684F00D301E6 /* UILabel.swift */; };
+		C10804BA20FE69A300D301E6 /* PlantDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C10804B920FE69A300D301E6 /* PlantDetail.storyboard */; };
+		C10804BC20FE69CA00D301E6 /* PlantDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10804BB20FE69CA00D301E6 /* PlantDetailController.swift */; };
 		C194D1A520FB4D59009616B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C194D1A420FB4D59009616B7 /* AppDelegate.swift */; };
 		C194D1AC20FB4D59009616B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C194D1AA20FB4D59009616B7 /* Main.storyboard */; };
 		C194D1AE20FB4D5E009616B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C194D1AD20FB4D5E009616B7 /* Assets.xcassets */; };
@@ -22,6 +25,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C10804B420FE684F00D301E6 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
+		C10804B920FE69A300D301E6 /* PlantDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlantDetail.storyboard; sourceTree = "<group>"; };
+		C10804BB20FE69CA00D301E6 /* PlantDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailController.swift; sourceTree = "<group>"; };
 		C194D1A120FB4D59009616B7 /* My garden.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My garden.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C194D1A420FB4D59009616B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C194D1AB20FB4D59009616B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -49,6 +55,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C10804B320FE684100D301E6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C10804B420FE684F00D301E6 /* UILabel.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C10804B620FE697600D301E6 /* PlantDetail */ = {
+			isa = PBXGroup;
+			children = (
+				C10804B820FE698C00D301E6 /* View */,
+				C10804B720FE698400D301E6 /* Controller */,
+			);
+			path = PlantDetail;
+			sourceTree = "<group>";
+		};
+		C10804B720FE698400D301E6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C10804BB20FE69CA00D301E6 /* PlantDetailController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		C10804B820FE698C00D301E6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C10804B920FE69A300D301E6 /* PlantDetail.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		C194D19820FB4D59009616B7 = {
 			isa = PBXGroup;
 			children = (
@@ -68,6 +107,8 @@
 		C194D1A320FB4D59009616B7 /* My garden */ = {
 			isa = PBXGroup;
 			children = (
+				C10804B620FE697600D301E6 /* PlantDetail */,
+				C10804B320FE684100D301E6 /* Extensions */,
 				C194D1BE20FB51E5009616B7 /* UserArea */,
 				C194D1B820FB517F009616B7 /* PlantsMain */,
 				C194D1A420FB4D59009616B7 /* AppDelegate.swift */,
@@ -93,8 +134,8 @@
 			isa = PBXGroup;
 			children = (
 				C194D1C520FB5253009616B7 /* PlantsMainController.swift */,
-				C19B1C8C20FB599F006192BB /* mainPlantCollectionViewCell.swift */,
 				C19B1C8E20FB5FF0006192BB /* PlantsMainCollectionViewHeaderView.swift */,
+				C19B1C8C20FB599F006192BB /* mainPlantCollectionViewCell.swift */,
 				C1AB8AA020FD185200839F2F /* WaterTodayCell.swift */,
 			);
 			path = Controller;
@@ -212,6 +253,7 @@
 				C194D1AE20FB4D5E009616B7 /* Assets.xcassets in Resources */,
 				C194D1AC20FB4D59009616B7 /* Main.storyboard in Resources */,
 				C194D1BD20FB51B2009616B7 /* PlantsMain.storyboard in Resources */,
+				C10804BA20FE69A300D301E6 /* PlantDetail.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,7 +270,9 @@
 				C194D1C820FB5299009616B7 /* UserAreaController.swift in Sources */,
 				C1AB8AA120FD185200839F2F /* WaterTodayCell.swift in Sources */,
 				C194D1C620FB5253009616B7 /* PlantsMainController.swift in Sources */,
+				C10804B520FE684F00D301E6 /* UILabel.swift in Sources */,
 				C19B1C8F20FB5FF0006192BB /* PlantsMainCollectionViewHeaderView.swift in Sources */,
+				C10804BC20FE69CA00D301E6 /* PlantDetailController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
