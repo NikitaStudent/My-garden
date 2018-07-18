@@ -10,6 +10,7 @@
 		C10804B520FE684F00D301E6 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10804B420FE684F00D301E6 /* UILabel.swift */; };
 		C10804BA20FE69A300D301E6 /* PlantDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C10804B920FE69A300D301E6 /* PlantDetail.storyboard */; };
 		C10804BC20FE69CA00D301E6 /* PlantDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10804BB20FE69CA00D301E6 /* PlantDetailController.swift */; };
+		C1369C3D20FF0154003EB2D7 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1369C3C20FF0154003EB2D7 /* UIApplication.swift */; };
 		C194D1A520FB4D59009616B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C194D1A420FB4D59009616B7 /* AppDelegate.swift */; };
 		C194D1AC20FB4D59009616B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C194D1AA20FB4D59009616B7 /* Main.storyboard */; };
 		C194D1AE20FB4D5E009616B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C194D1AD20FB4D5E009616B7 /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 		C10804B420FE684F00D301E6 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		C10804B920FE69A300D301E6 /* PlantDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlantDetail.storyboard; sourceTree = "<group>"; };
 		C10804BB20FE69CA00D301E6 /* PlantDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailController.swift; sourceTree = "<group>"; };
+		C1369C3C20FF0154003EB2D7 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		C194D1A120FB4D59009616B7 /* My garden.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My garden.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C194D1A420FB4D59009616B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C194D1AB20FB4D59009616B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				C10804B420FE684F00D301E6 /* UILabel.swift */,
+				C1369C3C20FF0154003EB2D7 /* UIApplication.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				C194D1C620FB5253009616B7 /* PlantsMainController.swift in Sources */,
 				C10804B520FE684F00D301E6 /* UILabel.swift in Sources */,
 				C19B1C8F20FB5FF0006192BB /* PlantsMainCollectionViewHeaderView.swift in Sources */,
+				C1369C3D20FF0154003EB2D7 /* UIApplication.swift in Sources */,
 				C10804BC20FE69CA00D301E6 /* PlantDetailController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

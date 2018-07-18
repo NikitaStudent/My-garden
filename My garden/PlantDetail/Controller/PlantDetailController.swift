@@ -26,6 +26,7 @@ class PlantDetailController: UIViewController {
         imageView.clipsToBounds = true
         view.addSubview(imageView)
         
+        navigationController?.navigationBar.tintColor = .white
         
     }
 
@@ -46,9 +47,27 @@ extension PlantDetailController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard let navBar = navigationController?.navigationBar else { return }
         let y = 300 - (scrollView.contentOffset.y + 300)
-        let height = min(max(y, 60), 400)
+//        print("nav bar size: \(navigationController?.navigationBar.frame.height) + \(UIApplication.shared.statusBarFrame.height)")
+        let height = min(max(y, navBar.frame.height + UIApplication.shared.statusBarFrame.height), 400)
         imageView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: height)
+        print("height: \(height)")
+        
+        var offset = scrollView.contentOffset.y / -300
+        if offset > 1 {
+            offset = 1
+            let color = UIColor(hue: 0, saturation: 0, brightness: 1, alpha: 1 - offset)
+            navBar.tintColor = UIColor(hue: 0, saturation: 0, brightness: offset, alpha: 1)
+            navBar.backgroundColor = color
+            UIApplication.shared.statusBarView?.backgroundColor = color
+        } else {
+            let color = UIColor(hue: 0, saturation: 0, brightness: 1, alpha: 1 - offset)
+            navBar.tintColor = UIColor(hue: 0, saturation: 0, brightness: offset, alpha: 1)
+            navBar.backgroundColor = color
+            UIApplication.shared.statusBarView?.backgroundColor = color
+        }
+        
     }
     
 }
