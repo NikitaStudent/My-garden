@@ -7,43 +7,77 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A0BE83A9ADFC1E98C7E911C /* Pods_My_garden.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FA03500F8EEA9D9262EEEB /* Pods_My_garden.framework */; };
 		C10804B520FE684F00D301E6 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10804B420FE684F00D301E6 /* UILabel.swift */; };
 		C10804BA20FE69A300D301E6 /* PlantDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C10804B920FE69A300D301E6 /* PlantDetail.storyboard */; };
 		C10804BC20FE69CA00D301E6 /* PlantDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10804BB20FE69CA00D301E6 /* PlantDetailController.swift */; };
 		C1369C3D20FF0154003EB2D7 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1369C3C20FF0154003EB2D7 /* UIApplication.swift */; };
+		C189D40521018A5B0023EE1E /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C189D40421018A5B0023EE1E /* MainTabBarController.swift */; };
+		C189D40821018BBF0023EE1E /* UserAreaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C189D40621018BBF0023EE1E /* UserAreaController.swift */; };
+		C189D40921018BBF0023EE1E /* UserAreaController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C189D40721018BBF0023EE1E /* UserAreaController.xib */; };
+		C189D40E21018E2D0023EE1E /* PlantDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C189D40C21018E2D0023EE1E /* PlantDetail.swift */; };
+		C189D40F21018E2D0023EE1E /* PlantDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = C189D40D21018E2D0023EE1E /* PlantDetail.xib */; };
+		C189D411210195640023EE1E /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C189D410210195640023EE1E /* UIView.swift */; };
+		C189D41521019A720023EE1E /* PlantDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C189D41321019A720023EE1E /* PlantDetailCell.swift */; };
+		C189D41621019A720023EE1E /* PlantDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C189D41421019A720023EE1E /* PlantDetailCell.xib */; };
+		C189D4182101A6EC0023EE1E /* PlantImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C189D4172101A6EC0023EE1E /* PlantImage.swift */; };
 		C194D1A520FB4D59009616B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C194D1A420FB4D59009616B7 /* AppDelegate.swift */; };
-		C194D1AC20FB4D59009616B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C194D1AA20FB4D59009616B7 /* Main.storyboard */; };
 		C194D1AE20FB4D5E009616B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C194D1AD20FB4D5E009616B7 /* Assets.xcassets */; };
 		C194D1B120FB4D5E009616B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C194D1AF20FB4D5E009616B7 /* LaunchScreen.storyboard */; };
 		C194D1BD20FB51B2009616B7 /* PlantsMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C194D1BC20FB51B2009616B7 /* PlantsMain.storyboard */; };
-		C194D1C420FB5211009616B7 /* UserArea.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C194D1C320FB5211009616B7 /* UserArea.storyboard */; };
 		C194D1C620FB5253009616B7 /* PlantsMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C194D1C520FB5253009616B7 /* PlantsMainController.swift */; };
-		C194D1C820FB5299009616B7 /* UserAreaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C194D1C720FB5299009616B7 /* UserAreaController.swift */; };
 		C194D1CA20FB5362009616B7 /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C194D1C920FB5362009616B7 /* Plant.swift */; };
 		C19B1C8D20FB599F006192BB /* mainPlantCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19B1C8C20FB599F006192BB /* mainPlantCollectionViewCell.swift */; };
-		C19B1C8F20FB5FF0006192BB /* PlantsMainCollectionViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19B1C8E20FB5FF0006192BB /* PlantsMainCollectionViewHeaderView.swift */; };
-		C1AB8AA120FD185200839F2F /* WaterTodayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AB8AA020FD185200839F2F /* WaterTodayCell.swift */; };
+		C19B1C8F20FB5FF0006192BB /* PlantsMainCollectionViewHeaderViewOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19B1C8E20FB5FF0006192BB /* PlantsMainCollectionViewHeaderViewOld.swift */; };
+		C1AB8AA120FD185200839F2F /* WaterTodayCellOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AB8AA020FD185200839F2F /* WaterTodayCellOld.swift */; };
+		C1C60A552101BE040004751E /* DB.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C60A542101BE040004751E /* DB.swift */; };
+		C1C701A9210080180097BB92 /* WaterTodayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C701A7210080180097BB92 /* WaterTodayCell.swift */; };
+		C1C701AA210080180097BB92 /* WaterTodayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1C701A8210080180097BB92 /* WaterTodayCell.xib */; };
+		C1C94EE8210051C900AEBD87 /* PlantMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C94EE6210051C900AEBD87 /* PlantMainViewController.swift */; };
+		C1C94EE9210051C900AEBD87 /* PlantMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1C94EE7210051C900AEBD87 /* PlantMainViewController.xib */; };
+		C1C94EEE2100526A00AEBD87 /* PlantMainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C94EEC2100526A00AEBD87 /* PlantMainCollectionViewCell.swift */; };
+		C1C94EEF2100526A00AEBD87 /* PlantMainCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1C94EED2100526A00AEBD87 /* PlantMainCollectionViewCell.xib */; };
+		C1C94EF42100599600AEBD87 /* PlantsMainCollectionViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C94EF22100599600AEBD87 /* PlantsMainCollectionViewHeaderView.swift */; };
+		C1C94EF52100599600AEBD87 /* PlantsMainCollectionViewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1C94EF32100599600AEBD87 /* PlantsMainCollectionViewHeaderView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		28FA03500F8EEA9D9262EEEB /* Pods_My_garden.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_My_garden.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C10804B420FE684F00D301E6 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		C10804B920FE69A300D301E6 /* PlantDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlantDetail.storyboard; sourceTree = "<group>"; };
 		C10804BB20FE69CA00D301E6 /* PlantDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailController.swift; sourceTree = "<group>"; };
 		C1369C3C20FF0154003EB2D7 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
+		C189D40421018A5B0023EE1E /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		C189D40621018BBF0023EE1E /* UserAreaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAreaController.swift; sourceTree = "<group>"; };
+		C189D40721018BBF0023EE1E /* UserAreaController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserAreaController.xib; sourceTree = "<group>"; };
+		C189D40C21018E2D0023EE1E /* PlantDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetail.swift; sourceTree = "<group>"; };
+		C189D40D21018E2D0023EE1E /* PlantDetail.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlantDetail.xib; sourceTree = "<group>"; };
+		C189D410210195640023EE1E /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		C189D41321019A720023EE1E /* PlantDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailCell.swift; sourceTree = "<group>"; };
+		C189D41421019A720023EE1E /* PlantDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlantDetailCell.xib; sourceTree = "<group>"; };
+		C189D4172101A6EC0023EE1E /* PlantImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantImage.swift; sourceTree = "<group>"; };
 		C194D1A120FB4D59009616B7 /* My garden.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My garden.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C194D1A420FB4D59009616B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C194D1AB20FB4D59009616B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C194D1AD20FB4D5E009616B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C194D1B020FB4D5E009616B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C194D1B220FB4D5E009616B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C194D1BC20FB51B2009616B7 /* PlantsMain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlantsMain.storyboard; sourceTree = "<group>"; };
-		C194D1C320FB5211009616B7 /* UserArea.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserArea.storyboard; sourceTree = "<group>"; };
 		C194D1C520FB5253009616B7 /* PlantsMainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsMainController.swift; sourceTree = "<group>"; };
-		C194D1C720FB5299009616B7 /* UserAreaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAreaController.swift; sourceTree = "<group>"; };
 		C194D1C920FB5362009616B7 /* Plant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
 		C19B1C8C20FB599F006192BB /* mainPlantCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainPlantCollectionViewCell.swift; sourceTree = "<group>"; };
-		C19B1C8E20FB5FF0006192BB /* PlantsMainCollectionViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsMainCollectionViewHeaderView.swift; sourceTree = "<group>"; };
-		C1AB8AA020FD185200839F2F /* WaterTodayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterTodayCell.swift; sourceTree = "<group>"; };
+		C19B1C8E20FB5FF0006192BB /* PlantsMainCollectionViewHeaderViewOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsMainCollectionViewHeaderViewOld.swift; sourceTree = "<group>"; };
+		C1AB8AA020FD185200839F2F /* WaterTodayCellOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterTodayCellOld.swift; sourceTree = "<group>"; };
+		C1C60A542101BE040004751E /* DB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DB.swift; sourceTree = "<group>"; };
+		C1C701A7210080180097BB92 /* WaterTodayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterTodayCell.swift; sourceTree = "<group>"; };
+		C1C701A8210080180097BB92 /* WaterTodayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WaterTodayCell.xib; sourceTree = "<group>"; };
+		C1C94EE6210051C900AEBD87 /* PlantMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantMainViewController.swift; sourceTree = "<group>"; };
+		C1C94EE7210051C900AEBD87 /* PlantMainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlantMainViewController.xib; sourceTree = "<group>"; };
+		C1C94EEC2100526A00AEBD87 /* PlantMainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantMainCollectionViewCell.swift; sourceTree = "<group>"; };
+		C1C94EED2100526A00AEBD87 /* PlantMainCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlantMainCollectionViewCell.xib; sourceTree = "<group>"; };
+		C1C94EF22100599600AEBD87 /* PlantsMainCollectionViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsMainCollectionViewHeaderView.swift; sourceTree = "<group>"; };
+		C1C94EF32100599600AEBD87 /* PlantsMainCollectionViewHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlantsMainCollectionViewHeaderView.xib; sourceTree = "<group>"; };
+		FA588C8D2841F3392CD32C3B /* Pods-My garden.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-My garden.release.xcconfig"; path = "Pods/Target Support Files/Pods-My garden/Pods-My garden.release.xcconfig"; sourceTree = "<group>"; };
+		FA913E6959FC4556D80DD4A7 /* Pods-My garden.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-My garden.debug.xcconfig"; path = "Pods/Target Support Files/Pods-My garden/Pods-My garden.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,17 +85,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A0BE83A9ADFC1E98C7E911C /* Pods_My_garden.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		48325B3A5EDA4B631B9C2FC2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				28FA03500F8EEA9D9262EEEB /* Pods_My_garden.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C10804B320FE684100D301E6 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				C10804B420FE684F00D301E6 /* UILabel.swift */,
 				C1369C3C20FF0154003EB2D7 /* UIApplication.swift */,
+				C189D410210195640023EE1E /* UIView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -69,26 +113,42 @@
 		C10804B620FE697600D301E6 /* PlantDetail */ = {
 			isa = PBXGroup;
 			children = (
-				C10804B820FE698C00D301E6 /* View */,
-				C10804B720FE698400D301E6 /* Controller */,
+				C189D41221019A510023EE1E /* Cells */,
+				C189D40A21018DD30023EE1E /* old */,
+				C189D40C21018E2D0023EE1E /* PlantDetail.swift */,
+				C189D40D21018E2D0023EE1E /* PlantDetail.xib */,
 			);
 			path = PlantDetail;
 			sourceTree = "<group>";
 		};
-		C10804B720FE698400D301E6 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				C10804BB20FE69CA00D301E6 /* PlantDetailController.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		C10804B820FE698C00D301E6 /* View */ = {
+		C189D40A21018DD30023EE1E /* old */ = {
 			isa = PBXGroup;
 			children = (
 				C10804B920FE69A300D301E6 /* PlantDetail.storyboard */,
+				C10804BB20FE69CA00D301E6 /* PlantDetailController.swift */,
 			);
-			path = View;
+			path = old;
+			sourceTree = "<group>";
+		};
+		C189D40B21018DE70023EE1E /* old */ = {
+			isa = PBXGroup;
+			children = (
+				C194D1BC20FB51B2009616B7 /* PlantsMain.storyboard */,
+				C194D1C520FB5253009616B7 /* PlantsMainController.swift */,
+				C19B1C8E20FB5FF0006192BB /* PlantsMainCollectionViewHeaderViewOld.swift */,
+				C19B1C8C20FB599F006192BB /* mainPlantCollectionViewCell.swift */,
+				C1AB8AA020FD185200839F2F /* WaterTodayCellOld.swift */,
+			);
+			path = old;
+			sourceTree = "<group>";
+		};
+		C189D41221019A510023EE1E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				C189D41321019A720023EE1E /* PlantDetailCell.swift */,
+				C189D41421019A720023EE1E /* PlantDetailCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		C194D19820FB4D59009616B7 = {
@@ -96,6 +156,8 @@
 			children = (
 				C194D1A320FB4D59009616B7 /* My garden */,
 				C194D1A220FB4D59009616B7 /* Products */,
+				F8D81A5BD09B3268BCB87C3D /* Pods */,
+				48325B3A5EDA4B631B9C2FC2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -110,15 +172,16 @@
 		C194D1A320FB4D59009616B7 /* My garden */ = {
 			isa = PBXGroup;
 			children = (
+				C194D1BA20FB5190009616B7 /* Model */,
 				C10804B620FE697600D301E6 /* PlantDetail */,
 				C10804B320FE684100D301E6 /* Extensions */,
 				C194D1BE20FB51E5009616B7 /* UserArea */,
 				C194D1B820FB517F009616B7 /* PlantsMain */,
 				C194D1A420FB4D59009616B7 /* AppDelegate.swift */,
-				C194D1AA20FB4D59009616B7 /* Main.storyboard */,
 				C194D1AD20FB4D5E009616B7 /* Assets.xcassets */,
 				C194D1AF20FB4D5E009616B7 /* LaunchScreen.storyboard */,
 				C194D1B220FB4D5E009616B7 /* Info.plist */,
+				C189D40421018A5B0023EE1E /* MainTabBarController.swift */,
 			);
 			path = "My garden";
 			sourceTree = "<group>";
@@ -126,71 +189,53 @@
 		C194D1B820FB517F009616B7 /* PlantsMain */ = {
 			isa = PBXGroup;
 			children = (
-				C194D1BA20FB5190009616B7 /* Model */,
-				C194D1BB20FB5194009616B7 /* View */,
-				C194D1B920FB5188009616B7 /* Controller */,
+				C189D40B21018DE70023EE1E /* old */,
+				C1C94EF12100590D00AEBD87 /* Cells */,
+				C1C94EE6210051C900AEBD87 /* PlantMainViewController.swift */,
+				C1C94EE7210051C900AEBD87 /* PlantMainViewController.xib */,
 			);
 			path = PlantsMain;
-			sourceTree = "<group>";
-		};
-		C194D1B920FB5188009616B7 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				C194D1C520FB5253009616B7 /* PlantsMainController.swift */,
-				C19B1C8E20FB5FF0006192BB /* PlantsMainCollectionViewHeaderView.swift */,
-				C19B1C8C20FB599F006192BB /* mainPlantCollectionViewCell.swift */,
-				C1AB8AA020FD185200839F2F /* WaterTodayCell.swift */,
-			);
-			path = Controller;
 			sourceTree = "<group>";
 		};
 		C194D1BA20FB5190009616B7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				C194D1C920FB5362009616B7 /* Plant.swift */,
+				C189D4172101A6EC0023EE1E /* PlantImage.swift */,
+				C1C60A542101BE040004751E /* DB.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		C194D1BB20FB5194009616B7 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				C194D1BC20FB51B2009616B7 /* PlantsMain.storyboard */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		C194D1BE20FB51E5009616B7 /* UserArea */ = {
 			isa = PBXGroup;
 			children = (
-				C194D1C220FB5202009616B7 /* Model */,
-				C194D1C020FB51F9009616B7 /* View */,
-				C194D1BF20FB51F3009616B7 /* Controller */,
+				C189D40621018BBF0023EE1E /* UserAreaController.swift */,
+				C189D40721018BBF0023EE1E /* UserAreaController.xib */,
 			);
 			path = UserArea;
 			sourceTree = "<group>";
 		};
-		C194D1BF20FB51F3009616B7 /* Controller */ = {
+		C1C94EF12100590D00AEBD87 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				C194D1C720FB5299009616B7 /* UserAreaController.swift */,
+				C1C94EEC2100526A00AEBD87 /* PlantMainCollectionViewCell.swift */,
+				C1C94EED2100526A00AEBD87 /* PlantMainCollectionViewCell.xib */,
+				C1C94EF22100599600AEBD87 /* PlantsMainCollectionViewHeaderView.swift */,
+				C1C94EF32100599600AEBD87 /* PlantsMainCollectionViewHeaderView.xib */,
+				C1C701A7210080180097BB92 /* WaterTodayCell.swift */,
+				C1C701A8210080180097BB92 /* WaterTodayCell.xib */,
 			);
-			path = Controller;
+			path = Cells;
 			sourceTree = "<group>";
 		};
-		C194D1C020FB51F9009616B7 /* View */ = {
+		F8D81A5BD09B3268BCB87C3D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C194D1C320FB5211009616B7 /* UserArea.storyboard */,
+				FA913E6959FC4556D80DD4A7 /* Pods-My garden.debug.xcconfig */,
+				FA588C8D2841F3392CD32C3B /* Pods-My garden.release.xcconfig */,
 			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		C194D1C220FB5202009616B7 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,9 +245,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C194D1B520FB4D5E009616B7 /* Build configuration list for PBXNativeTarget "My garden" */;
 			buildPhases = (
+				A936195E38FF054385230E1B /* [CP] Check Pods Manifest.lock */,
 				C194D19D20FB4D59009616B7 /* Sources */,
 				C194D19E20FB4D59009616B7 /* Frameworks */,
 				C194D19F20FB4D59009616B7 /* Resources */,
+				A6A08822469C836771952EF0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -251,16 +298,62 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C194D1C420FB5211009616B7 /* UserArea.storyboard in Resources */,
 				C194D1B120FB4D5E009616B7 /* LaunchScreen.storyboard in Resources */,
 				C194D1AE20FB4D5E009616B7 /* Assets.xcassets in Resources */,
-				C194D1AC20FB4D59009616B7 /* Main.storyboard in Resources */,
+				C189D41621019A720023EE1E /* PlantDetailCell.xib in Resources */,
+				C1C94EEF2100526A00AEBD87 /* PlantMainCollectionViewCell.xib in Resources */,
+				C189D40921018BBF0023EE1E /* UserAreaController.xib in Resources */,
+				C1C94EE9210051C900AEBD87 /* PlantMainViewController.xib in Resources */,
 				C194D1BD20FB51B2009616B7 /* PlantsMain.storyboard in Resources */,
+				C1C94EF52100599600AEBD87 /* PlantsMainCollectionViewHeaderView.xib in Resources */,
 				C10804BA20FE69A300D301E6 /* PlantDetail.storyboard in Resources */,
+				C189D40F21018E2D0023EE1E /* PlantDetail.xib in Resources */,
+				C1C701AA210080180097BB92 /* WaterTodayCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A6A08822469C836771952EF0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-My garden/Pods-My garden-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-My garden/Pods-My garden-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A936195E38FF054385230E1B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-My garden-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C194D19D20FB4D59009616B7 /* Sources */ = {
@@ -268,14 +361,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				C194D1A520FB4D59009616B7 /* AppDelegate.swift in Sources */,
+				C1C94EEE2100526A00AEBD87 /* PlantMainCollectionViewCell.swift in Sources */,
+				C189D40521018A5B0023EE1E /* MainTabBarController.swift in Sources */,
 				C194D1CA20FB5362009616B7 /* Plant.swift in Sources */,
 				C19B1C8D20FB599F006192BB /* mainPlantCollectionViewCell.swift in Sources */,
-				C194D1C820FB5299009616B7 /* UserAreaController.swift in Sources */,
-				C1AB8AA120FD185200839F2F /* WaterTodayCell.swift in Sources */,
+				C1AB8AA120FD185200839F2F /* WaterTodayCellOld.swift in Sources */,
 				C194D1C620FB5253009616B7 /* PlantsMainController.swift in Sources */,
 				C10804B520FE684F00D301E6 /* UILabel.swift in Sources */,
-				C19B1C8F20FB5FF0006192BB /* PlantsMainCollectionViewHeaderView.swift in Sources */,
+				C1C94EF42100599600AEBD87 /* PlantsMainCollectionViewHeaderView.swift in Sources */,
+				C1C94EE8210051C900AEBD87 /* PlantMainViewController.swift in Sources */,
+				C189D40821018BBF0023EE1E /* UserAreaController.swift in Sources */,
+				C19B1C8F20FB5FF0006192BB /* PlantsMainCollectionViewHeaderViewOld.swift in Sources */,
+				C189D41521019A720023EE1E /* PlantDetailCell.swift in Sources */,
+				C1C60A552101BE040004751E /* DB.swift in Sources */,
+				C1C701A9210080180097BB92 /* WaterTodayCell.swift in Sources */,
+				C189D411210195640023EE1E /* UIView.swift in Sources */,
+				C189D4182101A6EC0023EE1E /* PlantImage.swift in Sources */,
 				C1369C3D20FF0154003EB2D7 /* UIApplication.swift in Sources */,
+				C189D40E21018E2D0023EE1E /* PlantDetail.swift in Sources */,
 				C10804BC20FE69CA00D301E6 /* PlantDetailController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,14 +386,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C194D1AA20FB4D59009616B7 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C194D1AB20FB4D59009616B7 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C194D1AF20FB4D5E009616B7 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -418,6 +513,7 @@
 		};
 		C194D1B620FB4D5E009616B7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FA913E6959FC4556D80DD4A7 /* Pods-My garden.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -436,6 +532,7 @@
 		};
 		C194D1B720FB4D5E009616B7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FA588C8D2841F3392CD32C3B /* Pods-My garden.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

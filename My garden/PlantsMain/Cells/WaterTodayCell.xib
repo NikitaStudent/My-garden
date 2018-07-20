@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14269.14" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="WaterTodayCell" customModule="My_garden" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="81" height="105"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="81" height="105"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bps-f6-mCF">
+                        <rect key="frame" x="0.0" y="0.0" width="81" height="105"/>
+                    </imageView>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 день" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Tj-gk-zKD" customClass="PaddingLabel" customModule="My_garden" customModuleProvider="target">
+                        <rect key="frame" x="5" y="5" width="71" height="15"/>
+                        <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="topInset">
+                                <real key="value" value="3"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
+                                <real key="value" value="3"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
+                                <real key="value" value="7"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
+                                <real key="value" value="7"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Игорь" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AfN-ae-NMU">
+                        <rect key="frame" x="5" y="80" width="71" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="AfN-ae-NMU" secondAttribute="bottom" constant="7" id="34O-71-WRo"/>
+                <constraint firstItem="AfN-ae-NMU" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="Iax-lS-WfJ"/>
+                <constraint firstItem="Bps-f6-mCF" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="KhI-Rg-mtB"/>
+                <constraint firstAttribute="trailing" secondItem="AfN-ae-NMU" secondAttribute="trailing" constant="5" id="ZBR-wN-VOW"/>
+                <constraint firstAttribute="trailing" secondItem="Bps-f6-mCF" secondAttribute="trailing" id="auh-H0-7kQ"/>
+                <constraint firstAttribute="trailing" secondItem="2Tj-gk-zKD" secondAttribute="trailing" constant="5" id="d5r-ua-j56"/>
+                <constraint firstItem="2Tj-gk-zKD" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="dZ2-or-LhB"/>
+                <constraint firstItem="2Tj-gk-zKD" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="fF6-3Y-FlA"/>
+                <constraint firstAttribute="bottom" secondItem="Bps-f6-mCF" secondAttribute="bottom" id="hq8-DH-tLz"/>
+                <constraint firstItem="Bps-f6-mCF" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="r1A-fr-hKc"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="81" height="105"/>
+            <connections>
+                <outlet property="colorLabel" destination="2Tj-gk-zKD" id="9Lx-6i-76f"/>
+                <outlet property="image" destination="Bps-f6-mCF" id="yzd-OJ-WJ7"/>
+                <outlet property="title" destination="AfN-ae-NMU" id="7x9-5g-Vvv"/>
+            </connections>
+            <point key="canvasLocation" x="49.5" y="106.5"/>
+        </collectionViewCell>
+    </objects>
+</document>
