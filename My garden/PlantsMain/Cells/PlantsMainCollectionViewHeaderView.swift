@@ -15,6 +15,7 @@ class PlantsMainCollectionViewHeaderView: UICollectionReusableView {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var addButton: UIButton!
     
+    
     // MARK: - Properties
     
     fileprivate struct Constants {

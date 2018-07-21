@@ -13,7 +13,7 @@
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
             <objects>
-                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -27,7 +27,7 @@
                             <constraint firstItem="4Fr-7T-8kT" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="B48-sm-xPJ"/>
                             <constraint firstItem="4Fr-7T-8kT" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="C7f-C2-Yra"/>
                             <constraint firstAttribute="trailing" secondItem="4Fr-7T-8kT" secondAttribute="trailing" id="SLN-yk-LLz"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="4Fr-7T-8kT" secondAttribute="bottom" id="Utn-r9-i4q"/>
+                            <constraint firstAttribute="bottom" secondItem="4Fr-7T-8kT" secondAttribute="bottom" id="Utn-r9-i4q"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

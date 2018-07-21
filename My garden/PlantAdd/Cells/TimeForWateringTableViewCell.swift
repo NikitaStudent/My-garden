@@ -1,17 +1,16 @@
 //
-//  PlantDetailCell.swift
+//  TimeForWateringTableViewCell.swift
 //  My garden
 //
-//  Created by Александр Филимонов on 20/07/2018.
+//  Created by Александр Филимонов on 21/07/2018.
 //  Copyright © 2018 Alex Filimonov. All rights reserved.
 //
 
 import UIKit
 
-class PlantDetailCell: UITableViewCell {
-    
-    @IBOutlet weak var smallLabel: UILabel!
-    @IBOutlet weak var largeLabel: UILabel!
+class TimeForWateringTableViewCell: UITableViewCell {
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var segmented: UISegmentedControl!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,11 +21,6 @@ class PlantDetailCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
-    }
-    
-    override func prepareForReuse() {
-        smallLabel.text = ""
-        largeLabel.text = ""
     }
     
 }

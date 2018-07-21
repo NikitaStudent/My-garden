@@ -13,7 +13,6 @@ import RealmSwift
 @objcMembers
 class Plant: Object {
     
-//    dynamic var id = 0
     dynamic var name = ""
     dynamic var sort = ""
     dynamic var scedule = ""
@@ -25,13 +24,8 @@ class Plant: Object {
         return realm?.objects(PlantImage.self).filter(NSPredicate(format: "owner == %@", self))
     }
     
-//    override static func primaryKey() -> String? {
-//        return "id"
-//    }
-    
     static func getPlantObject(name: String, sort: String, scedule: String, waterTime: Int, timesOfWatering: Int, lastWatered: Date) -> Plant {
         let plant = Plant()
-//        plant.id = incrementID()
         plant.name = name
         plant.sort = sort
         plant.scedule = scedule
@@ -40,10 +34,5 @@ class Plant: Object {
         plant.lastWatered = lastWatered
         return plant
     }
-    
-//    static func incrementID() -> Int {
-//        let realm = try! Realm()
-//        return (realm.objects(Plant.self).max(ofProperty: "id") as Int? ?? 40) + 2
-//    }
     
 }

@@ -96,12 +96,19 @@ extension PlantMainViewController: UICollectionViewDelegate, UICollectionViewDat
 
             sectionHeader = headerView
             sectionHeader?.configure(with: plants)
+            
+            headerView.addButton.addTarget(self, action: #selector(handleAddPlant), for: .touchUpInside)
 
             return headerView
         default:
             assert(false, "Unexpected element kind")
         }
 
+    }
+    
+    @objc func handleAddPlant() {
+        let newVC = PlantAddViewController()
+        navigationController?.pushViewController(newVC, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

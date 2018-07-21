@@ -1,17 +1,17 @@
 //
-//  PlantDetailCell.swift
+//  AddPlantTableViewCell.swift
 //  My garden
 //
-//  Created by Александр Филимонов on 20/07/2018.
+//  Created by Александр Филимонов on 21/07/2018.
 //  Copyright © 2018 Alex Filimonov. All rights reserved.
 //
 
 import UIKit
 
-class PlantDetailCell: UITableViewCell {
+class AddPlantTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var smallLabel: UILabel!
-    @IBOutlet weak var largeLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var inputField: UITextField!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,11 +22,6 @@ class PlantDetailCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
-    }
-    
-    override func prepareForReuse() {
-        smallLabel.text = ""
-        largeLabel.text = ""
     }
     
 }
