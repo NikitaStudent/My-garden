@@ -23,6 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if !UserDefaults.standard.bool(forKey: "db_install") {
              loadDatabase()
         }
+        
+//        UIApplication.shared.statusBarView?.backgroundColor = .white
     
 //        let realm = try! Realm()
 //        try! realm.write {

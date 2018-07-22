@@ -32,7 +32,7 @@ class PlantDetail: UIViewController {
     fileprivate let dateFormatString = "dd.MM.yyyy"
     fileprivate let imageHeight: CGFloat = 150
     var plant: Plant?
-    fileprivate let cellsString = ["Вид", "Поливать", "Время полива", "Следующий полив", "Возраст(дней)", "Полито(раз)", "Фотографий", "Последний полив", "О виде"]
+    fileprivate let cellsString = ["Вид", "Поливать", "Время полива", "Следующий полив", "Последний полив", "Возраст(дней)", "Полито(раз)", "Фотографий", "О виде"]
     var photosCollectionView: PhotoTableViewCell?
     
     // MARK: - Base class
@@ -59,7 +59,7 @@ class PlantDetail: UIViewController {
     }
     
 //    override var preferredStatusBarStyle: UIStatusBarStyle {
-//        return .default
+//        return UIStatusBarStyle.lightContent
 //    }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -170,31 +170,29 @@ extension PlantDetail: UITableViewDataSource, UITableViewDelegate {
                     
                     cell.largeLabel.text = prettyPrintSmallDayDiffs(date: date, dateFormatString: dateFormatString)
                 case 4:
+                    let date = plant.lastWatering
+                    
+                    cell.largeLabel.text = prettyPrintSmallDayDiffs(date: date, dateFormatString: dateFormatString)
+                case 5:
                     let date = plant.birthDay
                     let now = Date()
-                    
-                    let calendar = Calendar(identifier: .gregorian)
                     
                     let dateFormatted = DateFormatter()
                     dateFormatted.dateFormat = dateFormatString
                     
-                    if let days = calendar.dateComponents([.day], from: date, to: now).day {
+                    if let days = daysDiffWithoutTime(from: date, to: now) {
                         cell.largeLabel.text = String(days)
                     } else {
                         cell.largeLabel.text = "Нет данных"
                     }
-                case 5:
-                    cell.largeLabel.text = String(plant.timesOfWatering)
                 case 6:
+                    cell.largeLabel.text = String(plant.timesOfWatering)
+                case 7:
                     if let count = plant.images?.count {
                         cell.largeLabel.text = String(count)
                     } else {
                         cell.largeLabel.text = "Ошибка подсчета фотографий"
                     }
-                case 7:
-                    let date = plant.lastWatering
-                    
-                    cell.largeLabel.text = prettyPrintSmallDayDiffs(date: date, dateFormatString: dateFormatString)
                 case 8:
                     cell.largeLabel.text = plant.about ?? "нет данных"
                 default:

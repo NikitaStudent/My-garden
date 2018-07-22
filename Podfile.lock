@@ -1,26 +1,36 @@
 PODS:
+  - Alamofire (4.7.3)
   - Realm (3.7.4):
     - Realm/Headers (= 3.7.4)
   - Realm/Headers (3.7.4)
   - RealmSwift (3.7.4):
     - Realm (= 3.7.4)
+  - SDWebImage (4.4.2):
+    - SDWebImage/Core (= 4.4.2)
+  - SDWebImage/Core (4.4.2)
   - SKPhotoBrowser (5.1.0)
 
 DEPENDENCIES:
+  - Alamofire (~> 4.7)
   - RealmSwift
+  - SDWebImage (~> 4.0)
   - SKPhotoBrowser
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Alamofire
     - Realm
     - RealmSwift
+    - SDWebImage
     - SKPhotoBrowser
 
 SPEC CHECKSUMS:
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   Realm: a469bb59e33f9926102ccaea4349822c53b9117e
   RealmSwift: a45861b21c180f5cf0f122144b9759fa8dde3e9e
+  SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
   SKPhotoBrowser: c20c1da34d737b4e3e101feead6c8dd92ebf860a
 
-PODFILE CHECKSUM: 0063896d7a99fb5892ed51c79273f2a64753b922
+PODFILE CHECKSUM: 6bab57e411e485be1ca00dfd6db5459639c4adcf
 
 COCOAPODS: 1.5.3

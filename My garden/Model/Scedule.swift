@@ -82,9 +82,9 @@ class Scedule {
         
         switch count {
         case 1:
-            firstComp = "каждый"
+            firstComp = "Каждый"
         default:
-            firstComp = "каждые"
+            firstComp = "Каждые"
         }
         
         
@@ -95,7 +95,7 @@ class Scedule {
             case .day:
                 lastComp = "день"
             case .week:
-                firstComp = "каждую"
+                firstComp = "Каждую"
                 lastComp = "неделю"
             case .month:
                 lastComp = "месяц"

@@ -8,11 +8,16 @@
 
 import UIKit
 
+protocol DateTableViewCellDelegate {
+    func dateWasChanget(to date: Date)
+}
+
 class DateTableViewCell: UITableViewCell {
     
     // MARK: - Properties
     
     private let dateFormatString = "dd.MM.yyyy"
+    var delegate: DateTableViewCellDelegate?
     
     // MARK: - IBOutlets
     
@@ -78,6 +83,7 @@ private extension DateTableViewCell {
         dateFormatted.dateFormat = dateFormatString
         
         textField.text = dateFormatted.string(from: curDate)
+        delegate?.dateWasChanget(to: curDate)
     }
     
     @objc func todayPressed(sender: UITabBarItem) {
@@ -87,5 +93,6 @@ private extension DateTableViewCell {
         dateFormatted.dateFormat = dateFormatString
         
         textField.text = dateFormatted.string(from: date)
+        delegate?.dateWasChanget(to: date)
     }
 }

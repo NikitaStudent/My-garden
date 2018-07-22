@@ -49,6 +49,10 @@ class PlantMainViewController: UIViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return UIStatusBarStyle.default
+    }
+    
     // MARK: - Internal methods
     
     func loadPlantData() {

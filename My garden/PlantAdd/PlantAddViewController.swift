@@ -156,6 +156,8 @@ class PlantAddViewController: UIViewController {
     
     @objc func nameWasChanged(_ textField: UITextField) {
         
+        print("name changed")
+        
         guard let text = textField.text else { return }
         
         if let plant = plant {
@@ -167,6 +169,8 @@ class PlantAddViewController: UIViewController {
     }
     
     @objc func sortWasChanged(_ textField: UITextField) {
+        
+        print("sort changed")
         
         guard let text = textField.text else { return }
         
@@ -195,6 +199,11 @@ extension PlantAddViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
+        if indexPath.section == 2 && indexPath.row == 3 {
+            if let cell = tableView.cellForRow(at: indexPath) as? TimeForWateringTableViewCell {
+                cell.setSelect()
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -268,12 +277,14 @@ extension PlantAddViewController: UITableViewDataSource, UITableViewDelegate {
                 let curCell = tableView.dequeueReusableCell(withIdentifier: Constants.segmentedCell, for: indexPath) as? TimeForWateringTableViewCell
                 
                 curCell?.titleLabel.text = cellsString[indexPath.row]
+                curCell?.delegate = self
                 
                 cell = curCell
             case 4:
                 let curCell = tableView.dequeueReusableCell(withIdentifier: Constants.dateCell, for: indexPath) as? DateTableViewCell
                 
                 curCell?.titleLabel.text = cellsString[indexPath.row]
+                curCell?.delegate = self
                 
                 cell = curCell
             default:
@@ -287,9 +298,29 @@ extension PlantAddViewController: UITableViewDataSource, UITableViewDelegate {
     
 }
 
+// MARK: - PhotosDelegate
+
 extension PlantAddViewController: PhotosDelegate {
     func photos(photoWasAdded photo: UIImage) {
         print("photo was added")
         images.append(photo)
+    }
+}
+
+// MARK: - TimeForWateringTableViewCellDelegate
+
+extension PlantAddViewController: TimeForWateringTableViewCellDelegate {
+    
+    func timeChanged(to value: String) {
+        print("new time: \(value)")
+    }
+    
+}
+
+// MARK: - DateTableViewCellDelegate
+
+extension PlantAddViewController: DateTableViewCellDelegate {
+    func dateWasChanget(to date: Date) {
+        print("date was changed to \(date)")
     }
 }

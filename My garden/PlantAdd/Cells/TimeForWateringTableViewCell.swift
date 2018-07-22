@@ -8,11 +8,16 @@
 
 import UIKit
 
+protocol TimeForWateringTableViewCellDelegate {
+    func timeChanged(to value: String)
+}
+
 class TimeForWateringTableViewCell: UITableViewCell {
     
     // MARK: - Properties
     
     private let variants = ["Утро", "Вечер"]
+    var delegate: TimeForWateringTableViewCellDelegate?
     
     // MARK: - IBOutlets
     
@@ -30,13 +35,17 @@ class TimeForWateringTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        showAlert()
+        
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         
         timeLabel.text = variants[0]
+    }
+    
+    public func setSelect() {
+        showAlert()
     }
     
 }
@@ -50,9 +59,11 @@ private extension TimeForWateringTableViewCell {
         
         alert.addAction(UIAlertAction(title: variants[0], style: .default, handler: { (action) in
             self.timeLabel.text = self.variants[0]
+            self.delegate?.timeChanged(to: self.variants[0])
         }))
         alert.addAction(UIAlertAction(title: variants[1], style: .default, handler: { (action) in
             self.timeLabel.text = self.variants[1]
+            self.delegate?.timeChanged(to: self.variants[1])
         }))
         
         alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: nil))

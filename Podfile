@@ -8,5 +8,7 @@ target 'My garden' do
   # Pods for My garden
   pod 'RealmSwift'
   pod 'SKPhotoBrowser'
+  pod 'Alamofire', '~> 4.7'
+  pod 'SDWebImage', '~> 4.0'
 
 end

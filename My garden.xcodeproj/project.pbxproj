@@ -39,6 +39,8 @@
 		C1C94EEF2100526A00AEBD87 /* PlantMainCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1C94EED2100526A00AEBD87 /* PlantMainCollectionViewCell.xib */; };
 		C1C94EF42100599600AEBD87 /* PlantsMainCollectionViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C94EF22100599600AEBD87 /* PlantsMainCollectionViewHeaderView.swift */; };
 		C1C94EF52100599600AEBD87 /* PlantsMainCollectionViewHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1C94EF32100599600AEBD87 /* PlantsMainCollectionViewHeaderView.xib */; };
+		C1E80A232105109D0021A27D /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E80A222105109D0021A27D /* API.swift */; };
+		C1E80A25210511A70021A27D /* SummaryObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E80A24210511A70021A27D /* SummaryObject.swift */; };
 		C1EF2BFD2102F61C00296507 /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1EF2BFB2102F61C00296507 /* PhotoTableViewCell.swift */; };
 		C1EF2BFE2102F61C00296507 /* PhotoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1EF2BFC2102F61C00296507 /* PhotoTableViewCell.xib */; };
 		C1EF2C012102F84B00296507 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1EF2BFF2102F84B00296507 /* PhotoCollectionViewCell.swift */; };
@@ -94,6 +96,8 @@
 		C1C94EED2100526A00AEBD87 /* PlantMainCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlantMainCollectionViewCell.xib; sourceTree = "<group>"; };
 		C1C94EF22100599600AEBD87 /* PlantsMainCollectionViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsMainCollectionViewHeaderView.swift; sourceTree = "<group>"; };
 		C1C94EF32100599600AEBD87 /* PlantsMainCollectionViewHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlantsMainCollectionViewHeaderView.xib; sourceTree = "<group>"; };
+		C1E80A222105109D0021A27D /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		C1E80A24210511A70021A27D /* SummaryObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryObject.swift; sourceTree = "<group>"; };
 		C1EF2BFB2102F61C00296507 /* PhotoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTableViewCell.swift; sourceTree = "<group>"; };
 		C1EF2BFC2102F61C00296507 /* PhotoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoTableViewCell.xib; sourceTree = "<group>"; };
 		C1EF2BFF2102F84B00296507 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -214,6 +218,7 @@
 		C194D1A320FB4D59009616B7 /* My garden */ = {
 			isa = PBXGroup;
 			children = (
+				C1E80A21210510200021A27D /* Network */,
 				C1EF2C0921031B9900296507 /* PlantAdd */,
 				C194D1BA20FB5190009616B7 /* Model */,
 				C10804B620FE697600D301E6 /* PlantDetail */,
@@ -272,6 +277,15 @@
 				C1C701A8210080180097BB92 /* WaterTodayCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		C1E80A21210510200021A27D /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				C1E80A222105109D0021A27D /* API.swift */,
+				C1E80A24210511A70021A27D /* SummaryObject.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		C1EF2C0921031B9900296507 /* PlantAdd */ = {
@@ -400,14 +414,18 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-My garden/Pods-My garden-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SKPhotoBrowser/SKPhotoBrowser.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SKPhotoBrowser.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -459,10 +477,12 @@
 				C1F3137721049C27006A246C /* Scedule.swift in Sources */,
 				C19B1C8F20FB5FF0006192BB /* PlantsMainCollectionViewHeaderViewOld.swift in Sources */,
 				C189D41521019A720023EE1E /* PlantDetailCell.swift in Sources */,
+				C1E80A25210511A70021A27D /* SummaryObject.swift in Sources */,
 				C1EF2C0C21031BB100296507 /* PlantAddViewController.swift in Sources */,
 				C1C60A552101BE040004751E /* DB.swift in Sources */,
 				C1EF2BFD2102F61C00296507 /* PhotoTableViewCell.swift in Sources */,
 				C1EF2C0521030EC100296507 /* CameraCollectionViewCell.swift in Sources */,
+				C1E80A232105109D0021A27D /* API.swift in Sources */,
 				C1EF2C1D21032B8B00296507 /* SceduleTableViewCell.swift in Sources */,
 				C1C701A9210080180097BB92 /* WaterTodayCell.swift in Sources */,
 				C189D411210195640023EE1E /* UIView.swift in Sources */,
