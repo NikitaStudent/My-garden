@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import NotificationCenter
 
 class PlantAddViewController: UIViewController {
     
@@ -53,6 +54,24 @@ class PlantAddViewController: UIViewController {
         tableView.register(UINib(nibName: "SceduleTableViewCell", bundle: nil), forCellReuseIdentifier: Constants.sceduleCell)
         
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+
+    }
+    
+    @objc func keyboardWillShow(_ notification:Notification) {
+        
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            tableView.contentInset = UIEdgeInsetsMake(0, 0, keyboardSize.height, 0)
+        }
+    }
+    @objc func keyboardWillHide(_ notification:Notification) {
+        
+        if let _ = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -88,18 +107,18 @@ class PlantAddViewController: UIViewController {
             }
             
             // сохраняем фотки
-            for image in images {
-                let imageData = UIImageJPEGRepresentation(image, 0.9)
-                if let imageData = imageData {
-                    let customImage = PlantImage.getPlantImage(image: imageData, owner: plant)
-                    try! realmInstatce.write {
-                        realmInstatce.add(customImage)
-                    }
-                } else {
-                    print("не удалось получить data from image")
-                }
-                
-            }
+//            for image in images {
+//                let imageData = UIImageJPEGRepresentation(image, 0.9)
+//                if let imageData = imageData {
+//                    let customImage = PlantImage.getPlantImage(image: imageData, owner: plant)
+//                    try! realmInstatce.write {
+//                        realmInstatce.add(customImage)
+//                    }
+//                } else {
+//                    print("не удалось получить data from image")
+//                }
+//
+//            }
             
             navigationController?.popViewController(animated: true)
             
@@ -108,26 +127,26 @@ class PlantAddViewController: UIViewController {
             guard name.count > 0, sort.count > 0, images.count > 0 else { return }
             
             // сохраняем объект
-            let plant = Plant.getPlantObject(name: name, sort: sort, scedule: "some", waterTime: 0, timesOfWatering: 12, lastWatered: Date(timeIntervalSince1970: TimeInterval(132561726354)))
+//            let plant = Plant.getPlantObject(name: name, sort: sort, scedule: "some", waterTime: 0, timesOfWatering: 12, lastWatered: Date(timeIntervalSince1970: TimeInterval(132561726354)))
             
-            let realmInstatce = try! Realm()
-            try! realmInstatce.write {
-                realmInstatce.add(plant)
-            }
+//            let realmInstatce = try! Realm()
+//            try! realmInstatce.write {
+//                realmInstatce.add(plant)
+//            }
             
             // сохраняем фотки
-            for image in images {
-                let imageData = UIImageJPEGRepresentation(image, 0.9)
-                if let imageData = imageData {
-                    let customImage = PlantImage.getPlantImage(image: imageData, owner: plant)
-                    try! realmInstatce.write {
-                        realmInstatce.add(customImage)
-                    }
-                } else {
-                    print("не удалось получить data from image")
-                }
-                
-            }
+//            for image in images {
+//                let imageData = UIImageJPEGRepresentation(image, 0.9)
+//                if let imageData = imageData {
+//                    let customImage = PlantImage.getPlantImage(image: imageData, owner: plant)
+//                    try! realmInstatce.write {
+//                        realmInstatce.add(customImage)
+//                    }
+//                } else {
+//                    print("не удалось получить data from image")
+//                }
+//                
+//            }
             
             navigationController?.popToRootViewController(animated: true)
             

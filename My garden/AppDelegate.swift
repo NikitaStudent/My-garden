@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if !UserDefaults.standard.bool(forKey: "db_install") {
              loadDatabase()
         }
-        
+    
 //        let realm = try! Realm()
 //        try! realm.write {
 //            realm.deleteAll()
@@ -73,8 +73,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard let image1 = UIImage(named: "plant1"), let image2 = UIImage(named: "plant2"), let image3 = UIImage(named: "plant3"), let image4 = UIImage(named: "plant4") else { return }
         guard let image1data = UIImageJPEGRepresentation(image1, 0.9), let image2data = UIImageJPEGRepresentation(image2, 0.9), let image3data = UIImageJPEGRepresentation(image3, 0.9), let image4data = UIImageJPEGRepresentation(image4, 0.9) else { return }
         
-        let plant1 = Plant.getPlantObject(name: "Игорь", sort: "Фиалка", scedule: "some", waterTime: 0, timesOfWatering: 12, lastWatered: Date(timeIntervalSince1970: TimeInterval(132561726354)))
-        let plant2 = Plant.getPlantObject(name: "Миша", sort: "Кактус", scedule: "some", waterTime: 0, timesOfWatering: 12, lastWatered: Date(timeIntervalSince1970: TimeInterval(1325617263234)))
+        let plant1 = Plant.getPlantObject(name: "Игорь", sort: "Фиалка", scedule: "w-1", waterTime: 0, timesOfWatering: 12, lastWatering: Date(timeIntervalSince1970: TimeInterval(132561726354)),nextWatering: Calendar.current.date(byAdding: .day, value: 1, to: Date())!)
+        let plant2 = Plant.getPlantObject(name: "Миша", sort: "Кактус", scedule: "d-3", waterTime: 1, timesOfWatering: 12, lastWatering: Date(timeIntervalSince1970: TimeInterval(1325617263234)), nextWatering: Calendar.current.date(byAdding: .day, value: -10, to: Date())!)
         
         let realmInstatce = try! Realm()
         try! realmInstatce.write {
@@ -82,11 +82,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             realmInstatce.add(plant2)
         }
         
-        let customImage1 = PlantImage.getPlantImage(image: image1data, owner: plant1)
-        let customImage2 = PlantImage.getPlantImage(image: image2data, owner: plant1)
+        let customImage1 = PlantImage.getPlantImage(image: image1data, owner: plant1, date: Date())
+        let customImage2 = PlantImage.getPlantImage(image: image2data, owner: plant1, date: Date())
         
-        let customImage3 = PlantImage.getPlantImage(image: image3data, owner: plant2)
-        let customImage4 = PlantImage.getPlantImage(image: image4data, owner: plant2)
+        let customImage3 = PlantImage.getPlantImage(image: image3data, owner: plant2, date: Date())
+        let customImage4 = PlantImage.getPlantImage(image: image4data, owner: plant2, date: Date())
         
         try! realmInstatce.write {
             realmInstatce.add(customImage1)

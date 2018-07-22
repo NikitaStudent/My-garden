@@ -55,6 +55,8 @@
 		C1EF2C1A21032A0F00296507 /* TimeForWateringTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1EF2C1821032A0F00296507 /* TimeForWateringTableViewCell.xib */; };
 		C1EF2C1D21032B8B00296507 /* SceduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1EF2C1B21032B8B00296507 /* SceduleTableViewCell.swift */; };
 		C1EF2C1E21032B8B00296507 /* SceduleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1EF2C1C21032B8B00296507 /* SceduleTableViewCell.xib */; };
+		C1F3137721049C27006A246C /* Scedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F3137621049C27006A246C /* Scedule.swift */; };
+		C1F313792104B3ED006A246C /* UsefulFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F313782104B3ED006A246C /* UsefulFunctions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -108,6 +110,8 @@
 		C1EF2C1821032A0F00296507 /* TimeForWateringTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeForWateringTableViewCell.xib; sourceTree = "<group>"; };
 		C1EF2C1B21032B8B00296507 /* SceduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceduleTableViewCell.swift; sourceTree = "<group>"; };
 		C1EF2C1C21032B8B00296507 /* SceduleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SceduleTableViewCell.xib; sourceTree = "<group>"; };
+		C1F3137621049C27006A246C /* Scedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scedule.swift; sourceTree = "<group>"; };
+		C1F313782104B3ED006A246C /* UsefulFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsefulFunctions.swift; sourceTree = "<group>"; };
 		FA588C8D2841F3392CD32C3B /* Pods-My garden.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-My garden.release.xcconfig"; path = "Pods/Target Support Files/Pods-My garden/Pods-My garden.release.xcconfig"; sourceTree = "<group>"; };
 		FA913E6959FC4556D80DD4A7 /* Pods-My garden.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-My garden.debug.xcconfig"; path = "Pods/Target Support Files/Pods-My garden/Pods-My garden.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -242,6 +246,8 @@
 				C194D1C920FB5362009616B7 /* Plant.swift */,
 				C189D4172101A6EC0023EE1E /* PlantImage.swift */,
 				C1C60A542101BE040004751E /* DB.swift */,
+				C1F3137621049C27006A246C /* Scedule.swift */,
+				C1F313782104B3ED006A246C /* UsefulFunctions.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -396,11 +402,13 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-My garden/Pods-My garden-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SKPhotoBrowser/SKPhotoBrowser.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SKPhotoBrowser.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -445,8 +453,10 @@
 				C1EF2C15210325F800296507 /* DateTableViewCell.swift in Sources */,
 				C1C94EF42100599600AEBD87 /* PlantsMainCollectionViewHeaderView.swift in Sources */,
 				C1EF2C012102F84B00296507 /* PhotoCollectionViewCell.swift in Sources */,
+				C1F313792104B3ED006A246C /* UsefulFunctions.swift in Sources */,
 				C1C94EE8210051C900AEBD87 /* PlantMainViewController.swift in Sources */,
 				C189D40821018BBF0023EE1E /* UserAreaController.swift in Sources */,
+				C1F3137721049C27006A246C /* Scedule.swift in Sources */,
 				C19B1C8F20FB5FF0006192BB /* PlantsMainCollectionViewHeaderViewOld.swift in Sources */,
 				C189D41521019A720023EE1E /* PlantDetailCell.swift in Sources */,
 				C1EF2C0C21031BB100296507 /* PlantAddViewController.swift in Sources */,

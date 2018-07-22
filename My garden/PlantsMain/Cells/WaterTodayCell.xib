@@ -22,8 +22,8 @@
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bps-f6-mCF">
                         <rect key="frame" x="0.0" y="0.0" width="81" height="105"/>
                     </imageView>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 день" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Tj-gk-zKD" customClass="PaddingLabel" customModule="My_garden" customModuleProvider="target">
-                        <rect key="frame" x="5" y="5" width="71" height="15"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Tj-gk-zKD" customClass="PaddingLabel" customModule="My_garden" customModuleProvider="target">
+                        <rect key="frame" x="5" y="5" width="6" height="15"/>
                         <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -57,10 +57,10 @@
                 <constraint firstItem="Bps-f6-mCF" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="KhI-Rg-mtB"/>
                 <constraint firstAttribute="trailing" secondItem="AfN-ae-NMU" secondAttribute="trailing" constant="5" id="ZBR-wN-VOW"/>
                 <constraint firstAttribute="trailing" secondItem="Bps-f6-mCF" secondAttribute="trailing" id="auh-H0-7kQ"/>
-                <constraint firstAttribute="trailing" secondItem="2Tj-gk-zKD" secondAttribute="trailing" constant="5" id="d5r-ua-j56"/>
                 <constraint firstItem="2Tj-gk-zKD" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="dZ2-or-LhB"/>
                 <constraint firstItem="2Tj-gk-zKD" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="fF6-3Y-FlA"/>
                 <constraint firstAttribute="bottom" secondItem="Bps-f6-mCF" secondAttribute="bottom" id="hq8-DH-tLz"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="2Tj-gk-zKD" secondAttribute="trailing" constant="5" id="mPd-Fq-odg"/>
                 <constraint firstItem="Bps-f6-mCF" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="r1A-fr-hKc"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>

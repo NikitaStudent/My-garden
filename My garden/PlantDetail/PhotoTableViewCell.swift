@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SKPhotoBrowser
 
 protocol PhotosDelegate {
     func photos(photoWasAdded photo: UIImage)
@@ -15,15 +16,15 @@ protocol PhotosDelegate {
 class PhotoTableViewCell: UITableViewCell {
     
     
+    @IBOutlet weak var addPhotoButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     
     fileprivate var images: [UIImage] = []
     fileprivate struct Constants {
         static let cellIdentifier = "cellID"
-        static let cameraIdentifier = "cameraID"
     }
-    fileprivate let sectionInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 8.0, right: 0.0)
-    fileprivate let liseSpacingBetweenCells: CGFloat = 2
+    fileprivate let sectionInsets = UIEdgeInsets(top: 16.0, left: 16.0, bottom: 10.0, right: 16.0)
+    fileprivate let liseSpacingBetweenCells: CGFloat = 6
     fileprivate let itemsPerRow: CGFloat = 4
     
     public var delegate: PhotosDelegate?
@@ -35,7 +36,10 @@ class PhotoTableViewCell: UITableViewCell {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: "PhotoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: Constants.cellIdentifier)
-        collectionView.register(UINib(nibName: "CameraCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: Constants.cameraIdentifier)
+        
+        addPhotoButton.layer.cornerRadius = 18.0
+        
+        addPhotoButton.addTarget(self, action: #selector(addPhotoHandle), for: .touchUpInside)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -48,6 +52,38 @@ class PhotoTableViewCell: UITableViewCell {
         self.images = images
     }
     
+    public func addImage(image: UIImage) {
+        images.insert(image, at: 0)
+        collectionView.reloadData()
+    }
+    
+    @objc private func addPhotoHandle() {
+        
+        let alert = UIAlertController(title: "Источник", message: "Откуда взять фотографию?", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Камера", style: UIAlertActionStyle.default, handler: { (action) in
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                let imagePicker = UIImagePickerController()
+                imagePicker.delegate = self
+                imagePicker.sourceType = .camera;
+                imagePicker.allowsEditing = false
+                self.parent?.present(imagePicker, animated: true, completion: nil)
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "Фото библиотка", style: UIAlertActionStyle.default, handler: { (action) in
+            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+                let imagePicker = UIImagePickerController()
+                imagePicker.delegate = self
+                imagePicker.sourceType = .photoLibrary;
+                imagePicker.allowsEditing = true
+                self.parent?.present(imagePicker, animated: true, completion: nil)
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "Отмена", style: UIAlertActionStyle.cancel, handler: nil))
+        
+        parent?.present(alert, animated: true, completion: nil)
+        
+    }
+    
 }
 
 
@@ -56,19 +92,11 @@ class PhotoTableViewCell: UITableViewCell {
 extension PhotoTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.row == 0 {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.cameraIdentifier, for: indexPath) as? CameraCollectionViewCell else {
-                return UICollectionViewCell()
-            }
-            
-            return cell
-        }
-        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.cellIdentifier, for: indexPath) as? PhotoCollectionViewCell else {
             return UICollectionViewCell()
         }
         
-        let curImage = images[indexPath.row - 1]
+        let curImage = images[indexPath.row]
         
         cell.imageView.image = curImage
         
@@ -80,37 +108,26 @@ extension PhotoTableViewCell: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return images.count + 1
+        return images.count
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.row == 0 {
-            
-            let alert = UIAlertController(title: "Источник", message: "Откуда взять фотографию?", preferredStyle: .actionSheet)
-            alert.addAction(UIAlertAction(title: "Камера", style: UIAlertActionStyle.default, handler: { (action) in
-                if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                    let imagePicker = UIImagePickerController()
-                    imagePicker.delegate = self
-                    imagePicker.sourceType = .camera;
-                    imagePicker.allowsEditing = false
-                    self.parent?.present(imagePicker, animated: true, completion: nil)
-                }
-            }))
-            alert.addAction(UIAlertAction(title: "Фото библиотка", style: UIAlertActionStyle.default, handler: { (action) in
-                if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-                    let imagePicker = UIImagePickerController()
-                    imagePicker.delegate = self
-                    imagePicker.sourceType = .photoLibrary;
-                    imagePicker.allowsEditing = true
-                    self.parent?.present(imagePicker, animated: true, completion: nil)
-                }
-            }))
-            alert.addAction(UIAlertAction(title: "Отмена", style: UIAlertActionStyle.cancel, handler: nil))
-            
-            parent?.present(alert, animated: true, completion: nil)
-            
-            
+        let curIndex = indexPath.row
+        guard let cell = collectionView.cellForItem(at: indexPath) as? PhotoCollectionViewCell, let originImage = cell.imageView.image else { return }
+        
+        var skImages = [SKPhoto]()
+        
+        for image in images {
+            let photo = SKPhoto.photoWithImage(image)// add some UIImage
+            skImages.append(photo)
         }
+        
+        SKPhotoBrowserOptions.displayStatusbar = true
+        
+        let browser = SKPhotoBrowser(originImage: originImage, photos: skImages, animatedFromView: cell)
+        browser.initializePageIndex(curIndex)
+        parent?.present(browser, animated: true, completion: {})
+    
     }
     
 }
@@ -120,10 +137,10 @@ extension PhotoTableViewCell: UICollectionViewDelegate, UICollectionViewDataSour
 extension PhotoTableViewCell: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let paddingSpace = liseSpacingBetweenCells * (itemsPerRow - 1)
+        let paddingSpace = liseSpacingBetweenCells * (itemsPerRow - 1) + sectionInsets.left + sectionInsets.right
         let availableWidth = collectionView.frame.width - paddingSpace
         let widthPerItem = availableWidth / itemsPerRow
-        return CGSize(width: widthPerItem, height: collectionView.frame.height - 11)
+        return CGSize(width: widthPerItem, height: collectionView.frame.height - sectionInsets.top - sectionInsets.bottom)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -143,9 +160,8 @@ extension PhotoTableViewCell: UIImagePickerControllerDelegate, UINavigationContr
         
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         
-        images.insert(image, at: 0)
+       
         delegate?.photos(photoWasAdded: image)
-        collectionView.reloadData()
     }
 
 }

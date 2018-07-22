@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class PlantDetail: UIViewController {
     
@@ -28,10 +29,11 @@ class PlantDetail: UIViewController {
         static let photoTableViewCell = "photoCellId"
         static let defaultCell = "defaultCellID"
     }
+    fileprivate let dateFormatString = "dd.MM.yyyy"
     fileprivate let imageHeight: CGFloat = 150
     var plant: Plant?
-    var plantName: String?
-    fileprivate let cellsString = ["Вид", "Поливать", "Время полива", "Следующий полив", "Возраст", "Полито раз", "Фотографий", "Последний полив"]
+    fileprivate let cellsString = ["Вид", "Поливать", "Время полива", "Следующий полив", "Возраст(дней)", "Полито(раз)", "Фотографий", "Последний полив", "О виде"]
+    var photosCollectionView: PhotoTableViewCell?
     
     // MARK: - Base class
 
@@ -47,10 +49,12 @@ class PlantDetail: UIViewController {
         tableView.estimatedRowHeight = 44.0
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.separatorStyle = .none
+        tableView.allowsSelection = false
         
         imageView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: imageHeight)
         view.addSubview(imageView)
         
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
     }
     
@@ -61,9 +65,9 @@ class PlantDetail: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let plantName = plantName {
-            navigationItem.title = plantName
-        }
+        navigationController?.navigationBar.backgroundColor = UIColor.clear
+        UIApplication.shared.statusBarView?.backgroundColor = UIColor.clear
+        
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white]
         
@@ -77,6 +81,12 @@ class PlantDetail: UIViewController {
     func setImage(with image: UIImage) {
         imageView.image = image
     }
+    
+}
+
+// MARK: - Private methods
+
+private extension PlantDetail {
     
     @objc private func editPlant() {
         let newVC = PlantAddViewController()
@@ -108,6 +118,21 @@ extension PlantDetail: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: Constants.defaultCell, for: indexPath)
+            guard let plant = plant else { return UITableViewCell() }
+            
+            cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 26)
+            cell.textLabel?.text = plant.name
+            cell.detailTextLabel?.text = plant.sort
+            cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 18)
+            
+            return cell
+        } else if indexPath.section == 1 {
+            
+            if let photosView = photosCollectionView {
+                return photosView
+            }
+            
             if let cell = tableView.dequeueReusableCell(withIdentifier: Constants.photoTableViewCell, for: indexPath) as? PhotoTableViewCell {
                 
                 guard let plant = plant else { return UITableViewCell() }
@@ -115,44 +140,63 @@ extension PlantDetail: UITableViewDataSource, UITableViewDelegate {
                 cell.configure(with: DB.shared.getImages(of: plant))
                 cell.parent = self
                 
+                photosCollectionView = cell
+                photosCollectionView?.delegate = self
+                
                 return cell
                 
             } else {
                 return UITableViewCell()
             }
-        } else if indexPath.section == 1 {
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: Constants.defaultCell, for: indexPath)
-            
-            cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 26)
-            cell.textLabel?.text = "О растении"
-            
-            return cell
             
         } else {
-            if let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellIdentifier, for: indexPath) as? PlantDetailCell {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellIdentifier, for: indexPath) as? PlantDetailCell, let plant = plant {
                 
                 cell.smallLabel.text = cellsString[indexPath.row]
                 
                 switch indexPath.row {
                 case 0:
-                    cell.largeLabel.text = plant?.sort
+                    cell.largeLabel.text = plant.sort
                 case 1:
-                    print("")
+                    cell.largeLabel.text = Scedule(str: plant.scedule).prettyPrint()
                 case 2:
-                    print("")
+                    if plant.timesOfWatering == 0 {
+                        cell.largeLabel.text = "Утро"
+                    } else {
+                        cell.largeLabel.text = "Вечер"
+                    }
                 case 3:
-                    print("")
+                    let date = plant.nextWatering
+                    
+                    cell.largeLabel.text = prettyPrintSmallDayDiffs(date: date, dateFormatString: dateFormatString)
                 case 4:
-                    print("")
+                    let date = plant.birthDay
+                    let now = Date()
+                    
+                    let calendar = Calendar(identifier: .gregorian)
+                    
+                    let dateFormatted = DateFormatter()
+                    dateFormatted.dateFormat = dateFormatString
+                    
+                    if let days = calendar.dateComponents([.day], from: date, to: now).day {
+                        cell.largeLabel.text = String(days)
+                    } else {
+                        cell.largeLabel.text = "Нет данных"
+                    }
                 case 5:
-                    print("")
+                    cell.largeLabel.text = String(plant.timesOfWatering)
                 case 6:
-                    if let count = plant?.images?.count {
+                    if let count = plant.images?.count {
                         cell.largeLabel.text = String(count)
+                    } else {
+                        cell.largeLabel.text = "Ошибка подсчета фотографий"
                     }
                 case 7:
-                    print("")
+                    let date = plant.lastWatering
+                    
+                    cell.largeLabel.text = prettyPrintSmallDayDiffs(date: date, dateFormatString: dateFormatString)
+                case 8:
+                    cell.largeLabel.text = plant.about ?? "нет данных"
                 default:
                     print("no such column")
                 }
@@ -196,5 +240,18 @@ extension PlantDetail: UITableViewDataSource, UITableViewDelegate {
         
     }
     
+}
+
+// MARK: - PhotosDelegate
+
+extension PlantDetail: PhotosDelegate {
+    func photos(photoWasAdded photo: UIImage) {
+        guard let plant = plant else { return }
+        if DB.shared.save(photo: photo, for: plant) {
+            photosCollectionView?.addImage(image: photo)
+        } else {
+            print("photo error saving to db")
+        }
+    }
 }
 

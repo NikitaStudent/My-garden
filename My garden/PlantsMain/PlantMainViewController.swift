@@ -17,6 +17,7 @@ class PlantMainViewController: UIViewController {
     let itemsPerRow: CGFloat = 2
     let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
     var plants: [Plant] = []
+    var plantWaterToday: [Plant] = []
     var sectionHeader: PlantsMainCollectionViewHeaderView?
     
     fileprivate struct Constants {
@@ -37,6 +38,8 @@ class PlantMainViewController: UIViewController {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         loadPlantData()
+        calculateWaterToday()
+        collectionView.collectionViewLayout.invalidateLayout()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,6 +59,24 @@ class PlantMainViewController: UIViewController {
         }
         self.plants = plants
     }
+    
+    func calculateWaterToday() {
+        plantWaterToday = DB.shared.getAllPlantsSortByDate().filter({ (plant) -> Bool in
+            
+            let now = Date()
+            let date = plant.nextWatering
+            
+            if let days = daysDiffWithoutTime(from: date, to: now) {
+                if days >= 0 {
+                    return true
+                } else {
+                    return false
+                }
+            } else {
+                return false
+            }
+        })
+    }
 
 }
 
@@ -68,8 +89,8 @@ extension PlantMainViewController: UICollectionViewDelegate, UICollectionViewDat
         
         let curPlant = plants[indexPath.row]
         
-        print("images: \(DB.shared.getImages(of: curPlant))")
-        cell?.imageView.image = DB.shared.getImages(of: curPlant).first
+        guard let image = DB.shared.getMainImage(of: plants[indexPath.row]) else { return UICollectionViewCell() }
+        cell?.imageView.image = image
         cell?.label.text = curPlant.name
         return cell ?? UICollectionViewCell()
     }
@@ -95,7 +116,8 @@ extension PlantMainViewController: UICollectionViewDelegate, UICollectionViewDat
             }
 
             sectionHeader = headerView
-            sectionHeader?.configure(with: plants)
+            sectionHeader?.configure(with: plantWaterToday)
+            sectionHeader?.delegate = self
             
             headerView.addButton.addTarget(self, action: #selector(handleAddPlant), for: .touchUpInside)
 
@@ -117,11 +139,12 @@ extension PlantMainViewController: UICollectionViewDelegate, UICollectionViewDat
         let curPlant = plants[indexPath.row]
         
         newVC.plant = curPlant
-        newVC.plantName = curPlant.name
         
-        guard let image = DB.shared.getImages(of: curPlant).first else { return }
+        if let cell = collectionView.cellForItem(at: indexPath) as? PlantMainCollectionViewCell, let image = cell.imageView.image {
+            newVC.setImage(with: image)
+        }
         
-        newVC.setImage(with: image)
+        
         
         
         navigationController?.pushViewController(newVC, animated: true)
@@ -146,6 +169,29 @@ extension PlantMainViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return sectionInsets.left
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: view.frame.width, height: 214)
+    }
+    
+}
+
+// MARK: - PlantsMainCollectionViewHeaderViewDelegate
+
+extension PlantMainViewController: PlantsMainCollectionViewHeaderViewDelegate {
+    
+    func plantWasWatered(at index: Int) {
+        plantWaterToday.remove(at: index)
+        sectionHeader?.configure(with: plantWaterToday)
+        sectionHeader?.reloadData()
+        
+        if plantWaterToday.count > 0 {
+            
+        } else {
+            print("сегодня больше нечего поливать")
+        }
+        
     }
     
 }

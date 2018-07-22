@@ -24,4 +24,12 @@ class AddPlantTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @objc func datePickerValueChanded(sender: UIDatePicker) {
+        
+        print("valueChanged to \(sender.date)")
+        
+    }
+    
+    
+    
 }

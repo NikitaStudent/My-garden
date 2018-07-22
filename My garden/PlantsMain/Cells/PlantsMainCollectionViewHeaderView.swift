@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol PlantsMainCollectionViewHeaderViewDelegate {
+    func plantWasWatered(at index: Int)
+}
+
 class PlantsMainCollectionViewHeaderView: UICollectionReusableView {
     
     // MARK: - IBOutlets
@@ -18,6 +22,7 @@ class PlantsMainCollectionViewHeaderView: UICollectionReusableView {
     
     // MARK: - Properties
     
+    var delegate: PlantsMainCollectionViewHeaderViewDelegate?
     fileprivate struct Constants {
         static let cellIdentifier = "customCell"
     }
@@ -46,6 +51,14 @@ class PlantsMainCollectionViewHeaderView: UICollectionReusableView {
         self.plants = plants
     }
     
+    func removeWaterToday() {
+        collectionView.removeFromSuperview()
+    }
+    
+    func reloadData() {
+        collectionView.reloadData()
+    }
+    
 }
 
 // MARK: - UICollectionViewDelegate, UICollectionViewDataSource
@@ -59,9 +72,21 @@ extension PlantsMainCollectionViewHeaderView: UICollectionViewDelegate, UICollec
         
         let curPlant = plants[indexPath.row]
         
-        guard let image = DB.shared.getImages(of: curPlant).first else { return UICollectionViewCell() }
-        cell.image.image = image
-        cell.title.text = curPlant.name
+        guard let image = DB.shared.getMainImage(of: plants[indexPath.row]) else { return UICollectionViewCell() }
+//        cell.image.image = image
+//        cell.title.text = curPlant.name
+        
+        // определяем просрочку
+        let now = Date()
+        let date = plants[indexPath.row].nextWatering
+        
+        if let days = daysDiffWithoutTime(from: date, to: now) {
+            if days > 0 {
+                cell.configure(image: image, title: curPlant.name, colorLabelString: String(days))
+            } else {
+                cell.configure(image: image, title: curPlant.name, colorLabelString: nil)
+            }
+        }
         
         return cell
     }
@@ -72,6 +97,26 @@ extension PlantsMainCollectionViewHeaderView: UICollectionViewDelegate, UICollec
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return plants.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("water today \(plants[indexPath.row].name)")
+        
+        let alert = UIAlertController(title: "Вы полили цветок \(plants[indexPath.row].name)?", message: nil, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Да", style: .default, handler: { (action) in
+            DB.shared.waterToday(plant: self.plants[indexPath.row])
+            
+            self.delegate?.plantWasWatered(at: indexPath.row)
+            
+//            self.plants.remove(at: indexPath.row)
+//            self.collectionView.reloadData()
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Нет", style: .cancel, handler: nil))
+        
+        UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
+        
     }
     
 }

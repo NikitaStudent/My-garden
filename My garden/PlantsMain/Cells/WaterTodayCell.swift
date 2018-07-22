@@ -20,5 +20,16 @@ class WaterTodayCell: UICollectionViewCell {
         image.layer.cornerRadius = 10.0
         colorLabel.layer.cornerRadius = colorLabel.frame.height / 2
     }
+    
+    public func configure(image: UIImage, title: String, colorLabelString: String?) {
+        if let colorLabelString = colorLabelString {
+            colorLabel.isHidden = false
+            colorLabel.text = colorLabelString
+        } else {
+            colorLabel.isHidden = true
+        }
+        self.image.image = image
+        self.title.text = title
+    }
 
 }

@@ -13,27 +13,17 @@ import RealmSwift
 @objcMembers
 class PlantImage: Object {
     
-//    dynamic var id = 0
     dynamic var image = Data()
     dynamic var owner: Plant?
+    dynamic var date = Date()
     
-    
-//    override static func primaryKey() -> String? {
-//        return "id"
-//    }
-    
-    static func getPlantImage(image: Data, owner: Plant?) -> PlantImage {
+    static func getPlantImage(image: Data, owner: Plant?, date: Date) -> PlantImage {
         let plantImage = PlantImage()
-//        plantImage.id = incrementID()
         plantImage.image = image
         plantImage.owner = owner
+        plantImage.date = date
         return plantImage
     }
-    
-//    static func incrementID() -> Int {
-//        let realm = try! Realm()
-//        return (realm.objects(PlantImage.self).max(ofProperty: "id") as Int? ?? 40) + 2
-//    }
     
 }
 
