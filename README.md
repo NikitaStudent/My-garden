@@ -2,7 +2,7 @@
 
 ![Готовый экран](https://github.com/alexfilimon/My-garden/blob/master/info/images/mainScreen.png)
 
-Это приложение создано в целях обучения.
+Это приложение создано во время обучения в школе SurfEducation iOS.
 
 ### Главный функционал приложения:
 - напоминания о поливе растений
@@ -14,9 +14,14 @@
 - пользовательская информация о растении
   - дата посадки
   - предпочитаемое время полива (утро/вечер)
+  - возраст цветка
+  - вид цветка
 
 ## Используемые модули
-- [Realm](https://github.com/realm/realm-cocoa)
+- [Realm](https://github.com/realm/realm-cocoa) - база данных
+- [SKPhotoBrowser](https://github.com/suzuki-0000/SKPhotoBrowser) - просмотрщик фото
+- [Alamofire](https://github.com/Alamofire/Alamofire) - запросы к API
+- [SDWebImage](https://github.com/rs/SDWebImage) - загрузка фото по ссылке
 
 ## Дизайн приложения:
 ![Главный экран приложения](https://cdn.dribbble.com/users/242402/screenshots/4481432/dribbble_post.png "Главный экран")
