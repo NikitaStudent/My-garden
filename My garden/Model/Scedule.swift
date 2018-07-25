@@ -16,8 +16,8 @@ enum SceduleDWM {
 
 class Scedule {
     
-    let sceduleDWM: SceduleDWM
-    let count: Int
+    var sceduleDWM: SceduleDWM
+    var count: Int
     
     init(str: String) {
         let partials = str.split(separator: "-")

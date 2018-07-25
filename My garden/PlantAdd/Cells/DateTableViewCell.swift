@@ -33,6 +33,13 @@ class DateTableViewCell: UITableViewCell {
         textField.inputAccessoryView = getToolBar()
     }
     
+    public func setInputDate(date: Date) {
+        let dateFormatted = DateFormatter()
+        dateFormatted.dateFormat = dateFormatString
+        
+        textField.text = dateFormatted.string(from: date)
+    }
+    
 }
 
 // MARK: - Private methods

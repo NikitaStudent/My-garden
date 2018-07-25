@@ -27,8 +27,12 @@ class PlantAddViewController: UIViewController {
     fileprivate var name = ""
     fileprivate var images: [UIImage] = []
     fileprivate var sort = ""
+    fileprivate var birthDate = Date()
+    fileprivate var scedule = "d-1"
+    fileprivate var waterTime = 0
     
     fileprivate let cellsString = ["Имя", "Вид", "Поливать", "Время полива", "Посажен"]
+    fileprivate let placeholders = ["Игорь", "Фикус", "Каждый день", "Утро", "12.12.2012"]
     fileprivate struct Constants {
         static let cellIdentifier = "customCell"
         static let photoTableViewCell = "photoCellId"
@@ -53,7 +57,8 @@ class PlantAddViewController: UIViewController {
         tableView.register(UINib(nibName: "TimeForWateringTableViewCell", bundle: nil), forCellReuseIdentifier: Constants.segmentedCell)
         tableView.register(UINib(nibName: "SceduleTableViewCell", bundle: nil), forCellReuseIdentifier: Constants.sceduleCell)
         
-        tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        // tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        tableView.separatorStyle = .none
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         
@@ -96,14 +101,8 @@ class PlantAddViewController: UIViewController {
         if let plant = plant {
             // если это редактирование предыдущего объекта
             
-            let realmInstatce = try! Realm()
-            try! realmInstatce.write {
-                if name.count > 0 {
-                    plant.name = name
-                }
-                if sort.count > 0 {
-                    plant.sort = sort
-                }
+            if !DB.shared.editPlant(plant: plant, name: name, sort: sort, birthDay: birthDate, waterTime: waterTime, scedule: scedule) {
+                print("не удалось сохранить")
             }
             
             // сохраняем фотки
@@ -120,7 +119,8 @@ class PlantAddViewController: UIViewController {
 //
 //            }
             
-            navigationController?.popViewController(animated: true)
+//            navigationController?.popViewController(animated: true)
+            navigationController?.popToRootViewController(animated: true)
             
         } else {
             // это создание нового объекта
@@ -128,25 +128,26 @@ class PlantAddViewController: UIViewController {
             
             // сохраняем объект
 //            let plant = Plant.getPlantObject(name: name, sort: sort, scedule: "some", waterTime: 0, timesOfWatering: 12, lastWatered: Date(timeIntervalSince1970: TimeInterval(132561726354)))
+            let plant = Plant.getPlantObject(name: self.name, sort: self.sort, scedule: self.scedule, waterTime: self.waterTime, timesOfWatering: 0, birthDay: birthDate)
             
-//            let realmInstatce = try! Realm()
-//            try! realmInstatce.write {
-//                realmInstatce.add(plant)
-//            }
+            let realmInstatce = try! Realm()
+            try! realmInstatce.write {
+                realmInstatce.add(plant)
+            }
             
             // сохраняем фотки
-//            for image in images {
-//                let imageData = UIImageJPEGRepresentation(image, 0.9)
-//                if let imageData = imageData {
-//                    let customImage = PlantImage.getPlantImage(image: imageData, owner: plant)
-//                    try! realmInstatce.write {
-//                        realmInstatce.add(customImage)
-//                    }
-//                } else {
-//                    print("не удалось получить data from image")
-//                }
-//                
-//            }
+            for image in images {
+                let imageData = UIImageJPEGRepresentation(image, 0.9)
+                if let imageData = imageData {
+                    let customImage = PlantImage.getPlantImage(image: imageData, owner: plant, date: Date())
+                    try! realmInstatce.write {
+                        realmInstatce.add(customImage)
+                    }
+                } else {
+                    print("не удалось получить data from image")
+                }
+                
+            }
             
             navigationController?.popToRootViewController(animated: true)
             
@@ -156,29 +157,21 @@ class PlantAddViewController: UIViewController {
     
     @objc func nameWasChanged(_ textField: UITextField) {
         
-        print("name changed")
+        print("name was changed")
         
         guard let text = textField.text else { return }
         
-        if let plant = plant {
-            plant.name = text
-        } else {
-            name = text
-        }
+        name = text
         
     }
     
     @objc func sortWasChanged(_ textField: UITextField) {
         
-        print("sort changed")
+        print("sort was changed")
         
         guard let text = textField.text else { return }
         
-        if let plant = plant {
-            plant.sort = text
-        } else {
-            sort = text
-        }
+        sort = text
         
     }
 
@@ -203,6 +196,8 @@ extension PlantAddViewController: UITableViewDataSource, UITableViewDelegate {
             if let cell = tableView.cellForRow(at: indexPath) as? TimeForWateringTableViewCell {
                 cell.setSelect()
             }
+        } else {
+            tableView.deselectRow(at: indexPath, animated: false)
         }
     }
     
@@ -248,9 +243,11 @@ extension PlantAddViewController: UITableViewDataSource, UITableViewDelegate {
             case 0:
                 let curCell = tableView.dequeueReusableCell(withIdentifier: Constants.cellIdentifier, for: indexPath) as? AddPlantTableViewCell
                 curCell?.titleLabel.text = cellsString[indexPath.row]
+                curCell?.inputField.placeholder = placeholders[indexPath.row]
                 
                 if let plant = plant {
                     curCell?.inputField.text = plant.name
+                    name = plant.name
                 }
                 
                 curCell?.inputField.addTarget(self, action: #selector(nameWasChanged(_:)), for: .editingChanged)
@@ -259,9 +256,11 @@ extension PlantAddViewController: UITableViewDataSource, UITableViewDelegate {
             case 1:
                 let curCell = tableView.dequeueReusableCell(withIdentifier: Constants.cellIdentifier, for: indexPath) as? AddPlantTableViewCell
                 curCell?.titleLabel.text = cellsString[indexPath.row]
+                curCell?.inputField.placeholder = placeholders[indexPath.row]
                 
                 if let plant = plant {
                     curCell?.inputField.text = plant.sort
+                    sort = plant.sort
                 }
                 
                 curCell?.inputField.addTarget(self, action: #selector(sortWasChanged(_:)), for: .editingChanged)
@@ -271,6 +270,12 @@ extension PlantAddViewController: UITableViewDataSource, UITableViewDelegate {
                 let curCell = tableView.dequeueReusableCell(withIdentifier: Constants.sceduleCell, for: indexPath) as? SceduleTableViewCell
                 
                 curCell?.titleView.text = cellsString[indexPath.row]
+                curCell?.delegate = self
+                
+                if let plant = plant {
+                    curCell?.textField.text = Scedule(str: plant.scedule).prettyPrint()
+                    scedule = plant.scedule
+                }
                 
                 cell = curCell
             case 3:
@@ -279,12 +284,22 @@ extension PlantAddViewController: UITableViewDataSource, UITableViewDelegate {
                 curCell?.titleLabel.text = cellsString[indexPath.row]
                 curCell?.delegate = self
                 
+                if let plant = plant {
+                    curCell?.setTitleText(num: plant.waterTime)
+                    waterTime = plant.waterTime
+                }
+                
                 cell = curCell
             case 4:
                 let curCell = tableView.dequeueReusableCell(withIdentifier: Constants.dateCell, for: indexPath) as? DateTableViewCell
                 
                 curCell?.titleLabel.text = cellsString[indexPath.row]
                 curCell?.delegate = self
+                
+                if let plant = plant {
+                    curCell?.setInputDate(date: plant.birthDay)
+                    birthDate = plant.birthDay
+                }
                 
                 cell = curCell
             default:
@@ -302,8 +317,8 @@ extension PlantAddViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension PlantAddViewController: PhotosDelegate {
     func photos(photoWasAdded photo: UIImage) {
-        print("photo was added")
         images.append(photo)
+        photoTableViewCell?.addImage(image: photo)
     }
 }
 
@@ -311,8 +326,9 @@ extension PlantAddViewController: PhotosDelegate {
 
 extension PlantAddViewController: TimeForWateringTableViewCellDelegate {
     
-    func timeChanged(to value: String) {
+    func timeChanged(to value: Int) {
         print("new time: \(value)")
+        waterTime = value
     }
     
 }
@@ -321,6 +337,14 @@ extension PlantAddViewController: TimeForWateringTableViewCellDelegate {
 
 extension PlantAddViewController: DateTableViewCellDelegate {
     func dateWasChanget(to date: Date) {
-        print("date was changed to \(date)")
+        birthDate = date
+    }
+}
+
+// MARK: - SceduleTableViewCellDelegate
+
+extension PlantAddViewController: SceduleTableViewCellDelegate {
+    func sceduleWasChanged(to scedule: Scedule) {
+        self.scedule = scedule.toString()
     }
 }

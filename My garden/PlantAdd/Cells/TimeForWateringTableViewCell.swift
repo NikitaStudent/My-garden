@@ -9,7 +9,7 @@
 import UIKit
 
 protocol TimeForWateringTableViewCellDelegate {
-    func timeChanged(to value: String)
+    func timeChanged(to value: Int)
 }
 
 class TimeForWateringTableViewCell: UITableViewCell {
@@ -48,6 +48,14 @@ class TimeForWateringTableViewCell: UITableViewCell {
         showAlert()
     }
     
+    public func setTitleText(num: Int) {
+        if num == 0 {
+            timeLabel.text = variants[0]
+        } else {
+            timeLabel.text = variants[1]
+        }
+    }
+    
 }
 
 // MARK: - Private methods
@@ -59,11 +67,11 @@ private extension TimeForWateringTableViewCell {
         
         alert.addAction(UIAlertAction(title: variants[0], style: .default, handler: { (action) in
             self.timeLabel.text = self.variants[0]
-            self.delegate?.timeChanged(to: self.variants[0])
+            self.delegate?.timeChanged(to: 0)
         }))
         alert.addAction(UIAlertAction(title: variants[1], style: .default, handler: { (action) in
             self.timeLabel.text = self.variants[1]
-            self.delegate?.timeChanged(to: self.variants[1])
+            self.delegate?.timeChanged(to: 1)
         }))
         
         alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: nil))

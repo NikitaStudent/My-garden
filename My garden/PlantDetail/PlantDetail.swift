@@ -55,11 +55,21 @@ class PlantDetail: UIViewController {
         view.addSubview(imageView)
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        
+    }
+    
+    private var needsShowDarkStatusBar: Bool {
+        return tableView.contentOffset.y > 300
+    }
+    
+    private var currentStatusBarStyle: UIStatusBarStyle {
+        if needsShowDarkStatusBar {
+            return .default
+        }
+        return .lightContent
     }
     
 //    override var preferredStatusBarStyle: UIStatusBarStyle {
-//        return UIStatusBarStyle.lightContent
+//        return currentStatusBarStyle
 //    }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -177,9 +187,6 @@ extension PlantDetail: UITableViewDataSource, UITableViewDelegate {
                     let date = plant.birthDay
                     let now = Date()
                     
-                    let dateFormatted = DateFormatter()
-                    dateFormatted.dateFormat = dateFormatString
-                    
                     if let days = daysDiffWithoutTime(from: date, to: now) {
                         cell.largeLabel.text = String(days)
                     } else {
@@ -235,6 +242,9 @@ extension PlantDetail: UITableViewDataSource, UITableViewDelegate {
             navBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor(hue: 0, saturation: 0, brightness: offset, alpha: 1)]
             UIApplication.shared.statusBarView?.backgroundColor = color
         }
+        
+        UIApplication.shared.statusBarStyle = currentStatusBarStyle
+        //setNeedsStatusBarAppearanceUpdate()
         
     }
     

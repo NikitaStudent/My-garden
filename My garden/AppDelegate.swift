@@ -75,8 +75,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard let image1 = UIImage(named: "plant1"), let image2 = UIImage(named: "plant2"), let image3 = UIImage(named: "plant3"), let image4 = UIImage(named: "plant4") else { return }
         guard let image1data = UIImageJPEGRepresentation(image1, 0.9), let image2data = UIImageJPEGRepresentation(image2, 0.9), let image3data = UIImageJPEGRepresentation(image3, 0.9), let image4data = UIImageJPEGRepresentation(image4, 0.9) else { return }
         
-        let plant1 = Plant.getPlantObject(name: "Игорь", sort: "Фиалка", scedule: "w-1", waterTime: 0, timesOfWatering: 12, lastWatering: Date(timeIntervalSince1970: TimeInterval(132561726354)),nextWatering: Calendar.current.date(byAdding: .day, value: 1, to: Date())!)
-        let plant2 = Plant.getPlantObject(name: "Миша", sort: "Кактус", scedule: "d-3", waterTime: 1, timesOfWatering: 12, lastWatering: Date(timeIntervalSince1970: TimeInterval(1325617263234)), nextWatering: Calendar.current.date(byAdding: .day, value: -10, to: Date())!)
+        let plant1 = Plant.getPlantObject(name: "Игорь", sort: "Фиалка", scedule: "w-1", waterTime: 0, timesOfWatering: 12, birthDay: Date())
+        let plant2 = Plant.getPlantObject(name: "Миша", sort: "Кактус", scedule: "d-3", waterTime: 1, timesOfWatering: 12, birthDay: Date(), nextWatering: Calendar.current.date(byAdding: .day, value: -11, to: Date())!)
         
         let realmInstatce = try! Realm()
         try! realmInstatce.write {

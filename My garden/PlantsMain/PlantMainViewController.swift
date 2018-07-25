@@ -37,9 +37,8 @@ class PlantMainViewController: UIViewController {
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
-        loadPlantData()
-        calculateWaterToday()
-        collectionView.collectionViewLayout.invalidateLayout()
+        UIApplication.shared.statusBarStyle = .default
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,12 +46,18 @@ class PlantMainViewController: UIViewController {
         
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
+        
+        loadPlantData()
+        calculateWaterToday()
+        collectionView.reloadData()
+        sectionHeader?.reloadData()
     }
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return UIStatusBarStyle.default
-    }
-    
+//
+//    override var preferredStatusBarStyle: UIStatusBarStyle {
+//        return UIStatusBarStyle.default
+//    }
+//
     // MARK: - Internal methods
     
     func loadPlantData() {
@@ -122,7 +127,7 @@ extension PlantMainViewController: UICollectionViewDelegate, UICollectionViewDat
             sectionHeader = headerView
             sectionHeader?.configure(with: plantWaterToday)
             sectionHeader?.delegate = self
-            
+
             headerView.addButton.addTarget(self, action: #selector(handleAddPlant), for: .touchUpInside)
 
             return headerView

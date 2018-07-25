@@ -20,25 +20,25 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="Время полива: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhf-4v-DwE">
-                        <rect key="frame" x="16" y="13" width="116.5" height="18"/>
+                        <rect key="frame" x="16" y="11" width="116.5" height="22"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Утро" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dmF-yv-AfY">
-                        <rect key="frame" x="142.5" y="11" width="135.5" height="22"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Утро" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dmF-yv-AfY">
+                        <rect key="frame" x="142.5" y="10" width="135.5" height="24"/>
+                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="mhf-4v-DwE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="2PE-qd-PgA"/>
-                    <constraint firstItem="dmF-yv-AfY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="7af-Sn-raR"/>
-                    <constraint firstItem="mhf-4v-DwE" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="CuZ-1j-VBu"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="dmF-yv-AfY" secondAttribute="bottom" id="Q2z-0x-ZdF"/>
+                    <constraint firstItem="dmF-yv-AfY" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="KH5-m0-apD"/>
                     <constraint firstItem="dmF-yv-AfY" firstAttribute="leading" secondItem="mhf-4v-DwE" secondAttribute="trailing" constant="10" id="WYe-cl-uKG"/>
+                    <constraint firstItem="mhf-4v-DwE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="ut4-Fg-Id8"/>
                     <constraint firstAttribute="trailingMargin" secondItem="dmF-yv-AfY" secondAttribute="trailing" id="wss-NW-Y0M"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="mhf-4v-DwE" secondAttribute="bottom" id="xEP-Wl-R1f"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

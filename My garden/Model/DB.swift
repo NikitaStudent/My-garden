@@ -39,6 +39,43 @@ class DB {
         }
     }
     
+    func editPlant(plant: Plant, name: String, sort: String, birthDay: Date, waterTime: Int, scedule: String) -> Bool {
+        
+        do {
+            var nextWatering = Date()
+            if plant.scedule == scedule {
+                nextWatering = plant.nextWatering
+            } else {
+                let sceduleObj = Scedule(str: scedule)
+                var curComponent = DateComponents()
+                switch sceduleObj.sceduleDWM {
+                case .day:
+                    curComponent.day = sceduleObj.count
+                case .week:
+                    curComponent.weekOfMonth = sceduleObj.count
+                case .month:
+                    curComponent.month = sceduleObj.count
+                }
+                nextWatering = Calendar.current.date(byAdding: curComponent, to: Date())!
+            }
+            
+            
+            
+            let realmInstatce = try Realm()
+            try realmInstatce.write {
+                plant.name = name
+                plant.sort = sort
+                plant.birthDay = birthDay
+                plant.waterTime = waterTime
+                plant.scedule = scedule
+                plant.nextWatering = nextWatering
+            }
+            return true
+        } catch {
+            return false
+        }
+    }
+    
     func save(photo: UIImage, for plant: Plant) -> Bool {
         if let imageData = UIImageJPEGRepresentation(photo, 0.9) {
             let customImage = PlantImage.getPlantImage(image: imageData, owner: plant, date: Date())

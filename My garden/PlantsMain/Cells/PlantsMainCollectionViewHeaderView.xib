@@ -17,11 +17,8 @@
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="z61-L0-vIx">
-                    <rect key="frame" x="10" y="41" width="300" height="115"/>
+                    <rect key="frame" x="10" y="41" width="300" height="141"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="115" id="Pid-qP-Tw5"/>
-                    </constraints>
                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hGK-tn-xbB">
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -36,7 +33,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6sK-OI-HL6">
-                    <rect key="frame" x="10" y="159" width="300" height="51"/>
+                    <rect key="frame" x="10" y="185" width="300" height="51"/>
                     <color key="backgroundColor" red="0.0" green="0.56031829119999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="51" id="3Qk-r4-TLh"/>
@@ -57,10 +54,11 @@
                 <constraint firstItem="6sK-OI-HL6" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" constant="10" id="c9g-i7-5K2"/>
                 <constraint firstItem="6sK-OI-HL6" firstAttribute="top" secondItem="z61-L0-vIx" secondAttribute="bottom" constant="3" id="fOn-7G-80C"/>
                 <constraint firstItem="CRr-EO-Cui" firstAttribute="top" secondItem="VXr-Tz-HHm" secondAttribute="top" id="tKI-E7-kME"/>
+                <constraint firstItem="VXr-Tz-HHm" firstAttribute="bottom" secondItem="6sK-OI-HL6" secondAttribute="bottom" id="yTy-NF-Kkl"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
             <connections>
-                <outlet property="addButton" destination="6sK-OI-HL6" id="6Qn-Ns-eZQ"/>
+                <outlet property="addButton" destination="6sK-OI-HL6" id="BoO-f4-shh"/>
                 <outlet property="collectionView" destination="z61-L0-vIx" id="nHg-cM-QFY"/>
             </connections>
             <point key="canvasLocation" x="34" y="172"/>

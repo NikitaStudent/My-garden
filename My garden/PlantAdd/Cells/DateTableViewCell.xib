@@ -19,26 +19,26 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="46.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="12.12.2012" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="aZ8-zN-JCM">
-                        <rect key="frame" x="104" y="11" width="200" height="25"/>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="12.12.2012" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="aZ8-zN-JCM">
+                        <rect key="frame" x="102" y="11.5" width="202" height="24"/>
                         <nil key="textColor"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="254" verticalHuggingPriority="253" text="Посажен: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3IF-5c-oAF">
-                        <rect key="frame" x="16" y="14.5" width="78" height="18"/>
+                        <rect key="frame" x="16" y="11" width="78" height="25"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="aZ8-zN-JCM" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="4vA-Jp-jAw"/>
-                    <constraint firstItem="3IF-5c-oAF" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="6f6-Zm-0ro"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="aZ8-zN-JCM" secondAttribute="bottom" id="Avx-Fx-Agn"/>
-                    <constraint firstItem="aZ8-zN-JCM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="FKe-bd-sTG"/>
-                    <constraint firstItem="aZ8-zN-JCM" firstAttribute="leading" secondItem="3IF-5c-oAF" secondAttribute="trailing" constant="10" id="aYg-Mx-Nci"/>
-                    <constraint firstItem="3IF-5c-oAF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="cT7-Nf-xWs"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="3IF-5c-oAF" secondAttribute="bottom" id="2ES-wf-nlE"/>
+                    <constraint firstItem="3IF-5c-oAF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="DBr-KW-bZD"/>
+                    <constraint firstItem="aZ8-zN-JCM" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="dxm-qr-Q0z"/>
+                    <constraint firstItem="aZ8-zN-JCM" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="ehJ-64-eD4"/>
+                    <constraint firstItem="aZ8-zN-JCM" firstAttribute="leading" secondItem="3IF-5c-oAF" secondAttribute="trailing" constant="8" id="kQl-wW-OZr"/>
+                    <constraint firstItem="3IF-5c-oAF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="oon-5Q-6Tx"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

@@ -28,7 +28,34 @@ class Plant: Object {
         return realm?.objects(PlantImage.self).filter(NSPredicate(format: "owner == %@", self))
     }
     
-    static func getPlantObject(name: String, sort: String, scedule: String, waterTime: Int, timesOfWatering: Int, lastWatering: Date, nextWatering: Date) -> Plant {
+    static func getPlantObject(name: String, sort: String, scedule: String, waterTime: Int, timesOfWatering: Int, birthDay: Date) -> Plant {
+        let plant = Plant()
+        
+        let sceduleObj = Scedule(str: scedule)
+        var curComponent = DateComponents()
+        switch sceduleObj.sceduleDWM {
+        case .day:
+            curComponent.day = sceduleObj.count
+        case .week:
+            curComponent.weekOfMonth = sceduleObj.count
+        case .month:
+            curComponent.month = sceduleObj.count
+        }
+        let nextWatering = Calendar.current.date(byAdding: curComponent, to: Date())!
+        
+        plant.name = name
+        plant.sort = sort
+        plant.scedule = scedule
+        plant.waterTime = waterTime
+        plant.timesOfWatering = timesOfWatering
+        plant.lastWatering = Date()
+        plant.birthDay = birthDay
+        plant.nextWatering = nextWatering
+        
+        return plant
+    }
+    
+    static func getPlantObject(name: String, sort: String, scedule: String, waterTime: Int, timesOfWatering: Int, birthDay: Date, nextWatering: Date) -> Plant {
         let plant = Plant()
         
         plant.name = name
@@ -36,8 +63,8 @@ class Plant: Object {
         plant.scedule = scedule
         plant.waterTime = waterTime
         plant.timesOfWatering = timesOfWatering
-        plant.lastWatering = lastWatering
-        plant.birthDay = Calendar.current.date(byAdding: .day, value: -10, to: Date())!
+        plant.lastWatering = Date()
+        plant.birthDay = birthDay
         plant.nextWatering = nextWatering
         
         return plant

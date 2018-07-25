@@ -8,20 +8,35 @@
 
 import UIKit
 
+protocol SceduleTableViewCellDelegate {
+    func sceduleWasChanged(to scedule: Scedule)
+}
+
 class SceduleTableViewCell: UITableViewCell {
-    @IBOutlet weak var titleView: UILabel!
     
-    @IBOutlet weak var picker: UIPickerView!
+    @IBOutlet weak var titleView: UILabel!
+    @IBOutlet weak var textField: UITextField!
     
     fileprivate var repeatTitle = ["день", "неделя", "месяц"]
     fileprivate let repeatCount = [1, 2, 3, 4, 5, 6]
     fileprivate var repeatName = "каждый"
     
+    fileprivate var curScedule = Scedule(sceduleDWM: .day, count: 1)
+    
+    var delegate: SceduleTableViewCellDelegate?
+    
+    fileprivate var picker: UIPickerView?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        picker.dataSource = self
-        picker.delegate = self
+//        picker.dataSource = self
+//        picker.delegate = self
+        
+        textField.inputView = getDatePicker()
+        textField.inputAccessoryView = getToolBar()
+        
+        textField.text = curScedule.prettyPrint()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -31,6 +46,61 @@ class SceduleTableViewCell: UITableViewCell {
     }
     
 }
+
+// MARK: - Private methods
+
+private extension SceduleTableViewCell {
+    
+    func getDatePicker() -> UIPickerView {
+        let picker = UIPickerView()
+        picker.delegate = self
+        picker.dataSource = self
+        
+//        picker.addTarget(self, action: #selector(pickerValueChanded(sender:)), for: .valueChanged)
+        
+        self.picker = picker
+        
+        return picker
+    }
+    
+    func getToolBar() -> UIToolbar {
+        let toolbar = UIToolbar()
+        
+        toolbar.isTranslucent = true
+        //        toolbar.layer.position = CGPoint(x: self.frame.size.width / 2, y: self.frame.size.height - 20.0)
+        toolbar.barStyle = .default
+        toolbar.tintColor = .black
+        
+        let doneButton = UIBarButtonItem(title: "Готово", style: .done, target: self, action: #selector(donePressed(sender:)))
+        
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        
+        toolbar.setItems([flexSpace, doneButton], animated: true)
+        
+        toolbar.sizeToFit()
+        toolbar.isUserInteractionEnabled = true
+        
+        return toolbar
+    }
+    
+    @objc func donePressed(sender: UIBarButtonItem) {
+        textField.resignFirstResponder()
+    }
+    
+//    @objc func pickerValueChanded(sender: UIPickerView) {
+//        let curCount = sender.selectedRow(inComponent: 1)
+//        let curDWM = sender.selectedRow(inComponent: 2)
+//
+////        let dateFormatted = DateFormatter()
+////        dateFormatted.dateFormat = dateFormatString
+////
+////        textField.text = dateFormatted.string(from: curDate)
+////        delegate?.dateWasChanget(to: curDate)
+//    }
+    
+}
+
+// MARK: -
 
 extension SceduleTableViewCell: UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
@@ -70,7 +140,7 @@ extension SceduleTableViewCell: UIPickerViewDelegate {
             default:
                 repeatName = "каждые"
             }
-            picker.reloadComponent(0)
+            picker?.reloadComponent(0)
             
             // массив месяц/неделя/день
             switch repeatCount[row] {
@@ -81,7 +151,30 @@ extension SceduleTableViewCell: UIPickerViewDelegate {
             default:
                 repeatTitle = ["дней", "недель", "месяцев"]
             }
-            picker.reloadComponent(2)
+            picker?.reloadComponent(2)
+        }
+        
+        // формируем структуру Scedule
+        
+        if component == 1 {
+            curScedule.count = repeatCount[row]
+            textField.text = curScedule.prettyPrint()
+            delegate?.sceduleWasChanged(to: curScedule)
+        }
+        
+        if component == 2 {
+            switch row {
+            case 0:
+                curScedule.sceduleDWM = .day
+            case 1:
+                curScedule.sceduleDWM = .week
+            case 2:
+                curScedule.sceduleDWM = .month
+            default:
+                print("no suxh column")
+            }
+            textField.text = curScedule.prettyPrint()
+            delegate?.sceduleWasChanged(to: curScedule)
         }
     }
     
