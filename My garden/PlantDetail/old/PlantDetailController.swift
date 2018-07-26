@@ -16,7 +16,7 @@ class PlantDetailController: UIViewController {
     
     let imageView = UIImageView()
     let imageHeight: CGFloat = 300
-    var plant: Plant!
+    var plant: PlantEntity!
     var plantName: String!
     
     override func viewDidLoad() {

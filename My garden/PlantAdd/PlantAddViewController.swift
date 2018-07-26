@@ -92,7 +92,7 @@ class PlantAddViewController: UIViewController {
     
     // MARK: - Custom methods
     
-    public func configure(with plant: Plant) {
+    public func configure(with plant: PlantEntity) {
         self.plant = plant
     }
     
@@ -128,7 +128,7 @@ class PlantAddViewController: UIViewController {
             
             // сохраняем объект
 //            let plant = Plant.getPlantObject(name: name, sort: sort, scedule: "some", waterTime: 0, timesOfWatering: 12, lastWatered: Date(timeIntervalSince1970: TimeInterval(132561726354)))
-            let plant = Plant.getPlantObject(name: self.name, sort: self.sort, scedule: self.scedule, waterTime: self.waterTime, timesOfWatering: 0, birthDay: birthDate)
+            let plant = PlantEntity.getPlantObject(name: self.name, sort: self.sort, scedule: self.scedule, waterTime: self.waterTime, timesOfWatering: 0, birthDay: birthDate)
             
             let realmInstatce = try! Realm()
             try! realmInstatce.write {
@@ -139,7 +139,7 @@ class PlantAddViewController: UIViewController {
             for image in images {
                 let imageData = UIImageJPEGRepresentation(image, 0.9)
                 if let imageData = imageData {
-                    let customImage = PlantImage.getPlantImage(image: imageData, owner: plant, date: Date())
+                    let customImage = PlantImageEntity.getPlantImageEntity(image: imageData, owner: plant, date: Date())
                     try! realmInstatce.write {
                         realmInstatce.add(customImage)
                     }
@@ -213,7 +213,7 @@ extension PlantAddViewController: UITableViewDataSource, UITableViewDelegate {
                     cell.parent = self
                     
                     if let plant = plant {
-                        cell.configure(with: DB.shared.getImages(of: plant))
+                        cell.configure(with: DB.shared.getImages(of: plant).map { UIImage(data: $0.image)! })
                         
                         return cell
                     } else {

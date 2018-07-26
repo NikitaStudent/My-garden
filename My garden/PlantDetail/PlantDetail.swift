@@ -31,7 +31,7 @@ class PlantDetail: UIViewController {
     }
     fileprivate let dateFormatString = "dd.MM.yyyy"
     fileprivate let imageHeight: CGFloat = 150
-    var plant: Plant?
+    var plant: PlantEntity?
     fileprivate let cellsString = ["Вид", "Поливать", "Время полива", "Следующий полив", "Последний полив", "Возраст(дней)", "Полито(раз)", "Фотографий", "О виде"]
     var photosCollectionView: PhotoTableViewCell?
     
@@ -58,7 +58,24 @@ class PlantDetail: UIViewController {
     }
     
     private var needsShowDarkStatusBar: Bool {
-        return tableView.contentOffset.y > 300
+        return navBarColorKoef < 0.5
+    }
+    
+    private var navBarColorKoef: CGFloat {
+        guard let navBar = navigationController?.navigationBar else { return 0 }
+        let navBarHeight = navBar.frame.height + UIApplication.shared.statusBarFrame.height
+        let y = 300 - (tableView.contentOffset.y + 300)
+        var offset = y / (navBarHeight) - 1.0
+        
+        if offset > 1 {
+            offset = 1
+        }
+        
+        if offset < 0 {
+            offset = 0
+        }
+        
+        return offset
     }
     
     private var currentStatusBarStyle: UIStatusBarStyle {
@@ -147,7 +164,7 @@ extension PlantDetail: UITableViewDataSource, UITableViewDelegate {
                 
                 guard let plant = plant else { return UITableViewCell() }
                 
-                cell.configure(with: DB.shared.getImages(of: plant))
+                cell.configure(with: DB.shared.getImages(of: plant).map { UIImage(data: $0.image)! })
                 cell.parent = self
                 
                 photosCollectionView = cell
@@ -244,7 +261,6 @@ extension PlantDetail: UITableViewDataSource, UITableViewDelegate {
         }
         
         UIApplication.shared.statusBarStyle = currentStatusBarStyle
-        //setNeedsStatusBarAppearanceUpdate()
         
     }
     

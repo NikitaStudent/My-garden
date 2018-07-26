@@ -14,7 +14,7 @@ class PlantsMainController: UIViewController {
 
     // MARK: - Properties
     
-    var plants: [Plant] = []
+    var plants: [PlantEntity] = []
     let itemsPerRow: CGFloat = 2
     let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
     var sectionHeader: PlantsMainCollectionViewHeaderView?
@@ -85,8 +85,8 @@ class PlantsMainController: UIViewController {
     
     func loadPlantData() {
         let realmInsance = try! Realm()
-        var plants = [Plant]()
-        for plant in realmInsance.objects(Plant.self) {
+        var plants = [PlantEntity]()
+        for plant in realmInsance.objects(PlantEntity.self) {
             plants.append(plant)
         }
         self.plants = plants

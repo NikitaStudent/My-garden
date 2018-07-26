@@ -16,8 +16,8 @@ class PlantMainViewController: UIViewController {
     
     let itemsPerRow: CGFloat = 2
     let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
-    var plants: [Plant] = []
-    var plantWaterToday: [Plant] = []
+    var plants: [PlantEntity] = []
+    var plantWaterToday: [PlantEntity] = []
     var sectionHeader: PlantsMainCollectionViewHeaderView?
     
     fileprivate struct Constants {
@@ -51,6 +51,8 @@ class PlantMainViewController: UIViewController {
         calculateWaterToday()
         collectionView.reloadData()
         sectionHeader?.reloadData()
+        
+        UIApplication.shared.statusBarStyle = .default
     }
     
 //
@@ -62,8 +64,8 @@ class PlantMainViewController: UIViewController {
     
     func loadPlantData() {
         let realmInsance = try! Realm()
-        var plants = [Plant]()
-        for plant in realmInsance.objects(Plant.self) {
+        var plants = [PlantEntity]()
+        for plant in realmInsance.objects(PlantEntity.self) {
             plants.append(plant)
         }
         self.plants = plants

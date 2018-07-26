@@ -25,7 +25,7 @@ class PlantsMainCollectionViewHeaderView: UICollectionReusableView {
     fileprivate struct Constants {
         static let cellIdentifier = "customCell"
     }
-    fileprivate var plants: [Plant] = []
+    fileprivate var plants: [PlantEntity] = []
     fileprivate let sectionInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 8.0, right: 0.0)
     fileprivate let cellWidth: CGFloat = 80
     
@@ -44,11 +44,12 @@ class PlantsMainCollectionViewHeaderView: UICollectionReusableView {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: "WaterTodayCell", bundle: nil), forCellWithReuseIdentifier: Constants.cellIdentifier)
+        
     }
     
     // MARK: - Custom methods
     
-    func configure(with plants: [Plant]) {
+    func configure(with plants: [PlantEntity]) {
         self.plants = plants
     }
     

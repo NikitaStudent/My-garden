@@ -7,67 +7,89 @@
 //
 
 import Foundation
-import UIKit
 import RealmSwift
 
-@objcMembers
-class Plant: Object {
+class Plant {
     
-    dynamic var name = ""
-    dynamic var destination: String? = nil
-    dynamic var about: String? = nil
-    dynamic var sort = ""
-    dynamic var scedule = ""
-    dynamic var waterTime = 0
-    dynamic var timesOfWatering = 0
-    dynamic var lastWatering = Date()
-    dynamic var nextWatering = Date()
-    dynamic var birthDay = Date()
+    let id: Int
+    var name: String
+    var destination: String?
+    var about: String?
+    var sort: String
+    var scedule: String
+    var waterTime: Int // 0 or 1
+    var timesOfWatering: Int
+    var lastWatering: Date
+    var nextWatering: Date
+    var birthDay: Date
+    var images: [PlantImage] = []
     
-    var images: Results<PlantImage>? {
-        return realm?.objects(PlantImage.self).filter(NSPredicate(format: "owner == %@", self))
+    init(id: Int, name: String, destination: String?, about: String?, sort: String, scedule: String, waterTime: Int, timesOfWatering: Int, lastWatering: Date, nextWatering: Date, birthDay: Date, images: [PlantImage]) {
+        self.id = id
+        self.name = name
+        self.destination = destination
+        self.about = about
+        self.sort = sort
+        self.scedule = scedule
+        self.waterTime = waterTime
+        self.timesOfWatering = timesOfWatering
+        self.lastWatering = lastWatering
+        self.nextWatering = nextWatering
+        self.birthDay = birthDay
+        
+        self.images = images
     }
     
-    static func getPlantObject(name: String, sort: String, scedule: String, waterTime: Int, timesOfWatering: Int, birthDay: Date) -> Plant {
-        let plant = Plant()
+    init(by id: Int) {
+        let realmInsance = try! Realm()
+        let plantEntity =  realmInsance.objects(PlantEntity.self).filter(NSPredicate(format: "id = %@", id)).first!
         
-        let sceduleObj = Scedule(str: scedule)
-        var curComponent = DateComponents()
-        switch sceduleObj.sceduleDWM {
-        case .day:
-            curComponent.day = sceduleObj.count
-        case .week:
-            curComponent.weekOfMonth = sceduleObj.count
-        case .month:
-            curComponent.month = sceduleObj.count
+        self.id = plantEntity.id
+        self.name = plantEntity.name
+        self.destination = plantEntity.destination
+        self.about = plantEntity.about
+        self.sort = plantEntity.sort
+        self.scedule = plantEntity.scedule
+        self.waterTime = plantEntity.waterTime
+        self.timesOfWatering = plantEntity.timesOfWatering
+        self.lastWatering = plantEntity.lastWatering
+        self.nextWatering = plantEntity.nextWatering
+        self.birthDay = plantEntity.birthDay
+        
+        self.images = DB.shared.getImages(of: plantEntity).map { PlantImage(by: $0) }
+    }
+    
+    init(by plantEntity: PlantEntity) {
+        self.id = plantEntity.id
+        self.name = plantEntity.name
+        self.destination = plantEntity.destination
+        self.about = plantEntity.about
+        self.sort = plantEntity.sort
+        self.scedule = plantEntity.scedule
+        self.waterTime = plantEntity.waterTime
+        self.timesOfWatering = plantEntity.timesOfWatering
+        self.lastWatering = plantEntity.lastWatering
+        self.nextWatering = plantEntity.nextWatering
+        self.birthDay = plantEntity.birthDay
+        
+        self.images = DB.shared.getImages(of: plantEntity).map { PlantImage(by: $0) }
+    }
+    
+    func getAllPlants() -> [Plant] {
+        var plantsEntity: [PlantEntity] = []
+        var plants: [Plant] = []
+        
+        let realmInsance = try! Realm()
+        for plant in realmInsance.objects(PlantEntity.self).sorted(byKeyPath: "birthDay") {
+            plantsEntity.append(plant)
         }
-        let nextWatering = Calendar.current.date(byAdding: curComponent, to: Date())!
         
-        plant.name = name
-        plant.sort = sort
-        plant.scedule = scedule
-        plant.waterTime = waterTime
-        plant.timesOfWatering = timesOfWatering
-        plant.lastWatering = Date()
-        plant.birthDay = birthDay
-        plant.nextWatering = nextWatering
+        for plantEntity in plantsEntity {
+            let curPlant = Plant(by: plantEntity)
+            plants.append(curPlant)
+        }
         
-        return plant
-    }
-    
-    static func getPlantObject(name: String, sort: String, scedule: String, waterTime: Int, timesOfWatering: Int, birthDay: Date, nextWatering: Date) -> Plant {
-        let plant = Plant()
-        
-        plant.name = name
-        plant.sort = sort
-        plant.scedule = scedule
-        plant.waterTime = waterTime
-        plant.timesOfWatering = timesOfWatering
-        plant.lastWatering = Date()
-        plant.birthDay = birthDay
-        plant.nextWatering = nextWatering
-        
-        return plant
+        return plants
     }
     
 }

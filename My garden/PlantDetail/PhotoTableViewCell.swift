@@ -126,6 +126,7 @@ extension PhotoTableViewCell: UICollectionViewDelegate, UICollectionViewDataSour
         
         let browser = SKPhotoBrowser(originImage: originImage, photos: skImages, animatedFromView: cell)
         browser.initializePageIndex(curIndex)
+        browser.delegate = self
         parent?.present(browser, animated: true, completion: {})
     
     }
@@ -164,5 +165,16 @@ extension PhotoTableViewCell: UIImagePickerControllerDelegate, UINavigationContr
         delegate?.photos(photoWasAdded: image)
     }
 
+}
+
+// MARK: -
+
+extension PhotoTableViewCell: SKPhotoBrowserDelegate {
+    
+    func didShowPhotoAtIndex(_ browser: SKPhotoBrowser, index: Int) {
+        UIApplication.shared.statusBarStyle = .lightContent
+        UIApplication.shared.statusBarView?.backgroundColor = UIColor.clear
+    }
+    
 }
 

@@ -16,7 +16,7 @@ class DB {
     
     // MARK: - Methods
     
-    func waterToday(plant: Plant) {
+    func waterToday(plant: PlantEntity) {
         
         let curScedule = Scedule(str: plant.scedule)
         let lastWatering = Date()
@@ -39,7 +39,7 @@ class DB {
         }
     }
     
-    func editPlant(plant: Plant, name: String, sort: String, birthDay: Date, waterTime: Int, scedule: String) -> Bool {
+    func editPlant(plant: PlantEntity, name: String, sort: String, birthDay: Date, waterTime: Int, scedule: String) -> Bool {
         
         do {
             var nextWatering = Date()
@@ -76,9 +76,9 @@ class DB {
         }
     }
     
-    func save(photo: UIImage, for plant: Plant) -> Bool {
+    func save(photo: UIImage, for plant: PlantEntity) -> Bool {
         if let imageData = UIImageJPEGRepresentation(photo, 0.9) {
-            let customImage = PlantImage.getPlantImage(image: imageData, owner: plant, date: Date())
+            let customImage = PlantImageEntity.getPlantImageEntity(image: imageData, owner: plant, date: Date())
             
             
             do {
@@ -96,44 +96,42 @@ class DB {
         
     }
     
-    func getAllPlants() -> [Plant] {
-        var plants: [Plant] = []
+    func getAllPlants() -> [PlantEntity] {
+        var plants: [PlantEntity] = []
         
         let realmInsance = try! Realm()
-        for plant in realmInsance.objects(Plant.self).sorted(byKeyPath: "birthDay") {
+        for plant in realmInsance.objects(PlantEntity.self).sorted(byKeyPath: "birthDay") {
             plants.append(plant)
         }
         
         return plants
     }
     
-    func getAllPlantsSortByDate() -> [Plant] {
-        var plants: [Plant] = []
+    func getAllPlantsSortByDate() -> [PlantEntity] {
+        var plants: [PlantEntity] = []
         
         let realmInsance = try! Realm()
-        for plant in realmInsance.objects(Plant.self).sorted(byKeyPath: "nextWatering") {
+        for plant in realmInsance.objects(PlantEntity.self).sorted(byKeyPath: "nextWatering") {
             plants.append(plant)
         }
         
         return plants
     }
     
-    func getImages(of plant: Plant) -> [UIImage] {
+    func getImages(of plant: PlantEntity) -> [PlantImageEntity] {
 
-        var images: [UIImage] = []
+        var images: [PlantImageEntity] = []
 
         guard let plantImages = plant.images else { return [] }
         for imageObject in Array(plantImages.sorted(byKeyPath: "date")).reversed() {
             // print(UIImage(data: imageObject.image))
-            if let image = UIImage(data: imageObject.image) {
-                images.append(image)
-            }
+            images.append(imageObject)
         }
 
         return images
     }
     
-    func getMainImage(of plant: Plant) -> UIImage? {
+    func getMainImage(of plant: PlantEntity) -> UIImage? {
         guard let plantImages = plant.images else { return nil }
         for imageObject in Array(plantImages.sorted(byKeyPath: "date")) {
             // print(UIImage(data: imageObject.image))

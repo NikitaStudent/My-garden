@@ -8,22 +8,23 @@
 
 import Foundation
 import UIKit
-import RealmSwift
 
-@objcMembers
-class PlantImage: Object {
+class PlantImage {
     
-    dynamic var image = Data()
-    dynamic var owner: Plant?
-    dynamic var date = Date()
+    let id: Int
+    var image: UIImage
+    var date: Date
     
-    static func getPlantImage(image: Data, owner: Plant?, date: Date) -> PlantImage {
-        let plantImage = PlantImage()
-        plantImage.image = image
-        plantImage.owner = owner
-        plantImage.date = date
-        return plantImage
+    init(id: Int, image: UIImage, date: Date) {
+        self.id = id
+        self.image = image
+        self.date = date
+    }
+    
+    init(by plantImageEntity: PlantImageEntity) {
+        self.id = plantImageEntity.id
+        self.image = UIImage(data: plantImageEntity.image)!
+        self.date = plantImageEntity.date
     }
     
 }
-
