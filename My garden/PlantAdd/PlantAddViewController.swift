@@ -201,6 +201,19 @@ extension PlantAddViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if plant != nil {
+            if indexPath.section == 0 {
+                return 0
+            } else {
+                return UITableViewAutomaticDimension
+            }
+        } else {
+            return UITableViewAutomaticDimension
+        }
+    }
+
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.section == 0 {

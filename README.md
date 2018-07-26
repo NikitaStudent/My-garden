@@ -17,7 +17,19 @@
   - возраст цветка
   - вид цветка
 
-## Используемые модули
+### Техническая информация:
+- разработка велась в xCode 10 beta (но проект сохранялся в xCode 9.3 совместимости)
+- Навигация: `TabBarController -> NavigationController -> ViewController`
+- Изменение цвета StatusBar - `UIApplication.shared.statusBarView?.backgroundColor` (statusBarView - extension для AppDelegate)
+- Изменение стиля StatusBar - `UIApplication.shared.statusBarStyle = .default` / `.lightContent` - deprecated since iOS 9.0 , но предложенный Apple метод не работал
+- Расписание хранилось в строке, и вся работа с ним велась с кастомным классом `Scedule`, который парсил/распарсивал строку и приводил ее в печатный вид
+- В изменениии/добавлении цветка использовались кастомные класиатуры с `datePicker` с помощью метода `textField.inputView`, а так же кастомный toolBar над клавиатурой с помощью метода `textField.inputAccessoryView`
+
+## Что дальше?
+- сделать прослойку между Realm и приложением - `PlantEntity` и `PlantImageEntity` (начато в ветке `addEntityModel`)
+- добавить UserArea и настройки (сейчас есть UserAreaController без реализации)
+
+## Используемые модули:
 - [Realm](https://github.com/realm/realm-cocoa) - база данных
 - [SKPhotoBrowser](https://github.com/suzuki-0000/SKPhotoBrowser) - просмотрщик фото
 - [Alamofire](https://github.com/Alamofire/Alamofire) - запросы к API
